@@ -37,7 +37,7 @@ $('.notice').css({'right':-500});
 foreach($query as $rows){
 ?>
 <tr>
-<td class="tdname"><div class="maxcontent"><a href="http://phim.vnptmang.com/phim-<?=$rows['url']?>/1/1"><?=$rows['name']?></a></div>
+<td class="tdname"><div class="maxcontent"><?=$rows['url']?></div>
 <td class="function"><div class="maxcontent"><a href="/editChannel/<?=$rows['id']?>">Sửa Thông tin</a> / <a class="delete" idmv="<?=$rows['id']?>" href="#">Xóa</a></div>
 <?php
 }
