@@ -5,7 +5,7 @@ $url = str_replace(' ', '-', $url);
 $url = str_replace(':', '', $url);
 $url = str_replace('/', '', $url);
 $query = $con->prepare("INSERT INTO `channel`(`url`,`title`,`imgsrc`,`alt`,`groups`) VALUES (:url,:title,:img,:alt,:groups)");
-$query->execute(array(":url"=> $_POST['url'],":url"=> $_POST['title'],":title"=> $_POST['title'],":img"=> $_POST['img'],":alt"=> $_POST['alt'],":groups"=> $_POST['groups'], ));
+$query->execute(array(":url"=> $_POST['url'],":title"=> $_POST['title'],":img"=> $_POST['img'],":alt"=> $_POST['alt'],":groups"=> $_POST['groups']));
 header("Location: /");
 }else{
 ?>
