@@ -1,26 +1,38 @@
+
 <?php
-if(isset($_POST['submit'])){
-$query = $con->prepare("UPDATE `channel` SET `url`=?,`title`=?,`imgsrc`=?,`alt`=?,`groups`=? where id=?");
-$query->execute(array($_POST['url'],$_POST['title'],$_POST['img'],$_POST['alt'],$_POST['groups'],$extend1));
-header('Location: /');
-}else{
-$sql = $con->prepare("SELECT * FROM `channel` WHERE id=?");
-$sql->execute(array($extend1));
-$row =$sql->fetch(PDO::FETCH_ASSOC);
-?>
-<form name="up2" method="post">
-URL:
-<input class="classinput" type="text" name="url" placeholder="URL..." value="<?=$row['url'?>">
-Title Seo URL:
-<input class="classinput" type="text" name="title" placeholder="Tiêu đề..."value="<?=$row['title'?>">
-Link Ảnh:
-<input class="classinput" type="text" name="img" placeholder="Link ảnh...."value="<?=$row['imgsrc'?>">
-Alt:
-<input class="classinput" type="text" name="alt" placeholder="ALT...."value="<?=$row['alt'?>">
-Nhóm:
-<input class="classinput" type="text" name="groups" placeholder="Nhóm...."value="<?=$row['groups'?>">
-<input class="button" type="submit" name="submit" value="Gửi">
-</form>
-<?php
+$sql = $con->prepare("Select * from `channel`");
+$sql->execute(array());
+$content1='';
+$content2='';
+$content3='';
+$content4='';
+$content5='';
+$content6='';
+
+foreach($sql->fetchAll(PDO::FETCH_ASSOC) as $rows){
+$if($rows['alt']=='') $alt = $rows['title'];
+else $alt = $rows['alt'];
+$content[$rows['groups']] .= '<figure class="channel"><a title="'.$rows['title'].'"  href="'.$rows['url'].'"><img class="imgchl" src="'.$rows['imgsrc'].'" alt="'.$alt.'"/></a><div class="popup" rel=''></div></figure>'
 }
+
 ?>
+
+
+<div class="content1">
+<?=$content[1];?>
+</div>
+<div class="content2">
+<?=$content[2];?>
+</div>
+<div class="content3">
+<?=$content[3];?>
+</div>
+<div class="content4">
+<?=$content[4];?>
+</div>
+<div class="content5">
+<?=$content[5];?>
+</div>
+<div class="content6">
+<?=$content[6];?>
+</div>
