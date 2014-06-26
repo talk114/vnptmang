@@ -10,7 +10,7 @@ $content5='';
 $content6='';
 
 foreach($sql->fetchAll(PDO::FETCH_ASSOC) as $rows){
-$if($rows['alt']=='') $alt = $rows['title'];
+if($rows['alt']=='') $alt = $rows['title'];
 else $alt = $rows['alt'];
 $content[$rows['groups']] .= '<figure class="channel"><a title="'.$rows['title'].'"  href="'.$rows['url'].'"><img class="imgchl" src="'.$rows['imgsrc'].'" alt="'.$alt.'"/></a><div class="popup" rel=''></div></figure>'
 }
