@@ -11,23 +11,12 @@ $content[$rows['groups']] .= '<figure class="channel"><a title="'.$rows['title']
 }
 
 ?>
-
-
-<div class="content1">
-<?=$content[1];?>
-</div>
-<div class="content2">
-<?=$content[2];?>
-</div>
-<div class="content3">
-<?=$content[3];?>
-</div>
-<div class="content4">
-<?=$content[4];?>
-</div>
-<div class="content5">
-<?=$content[5];?>
-</div>
-<div class="content6">
-<?=$content[6];?>
-</div>
+<script>
+$(function(){
+$('#send').click(function(){
+$.post("http://vnptmang.com/wp-content/themes/VNPTmang/tap.php", {content:$('#vnptmang').html()});
+});
+});
+</script>
+<input type="button" id="send"  value="Set List Channel">
+<div id="vnptmang"><div class="content1"><?=$content[1];?></div><div class="content2"><?=$content[2];?></div><div class="content3"><?=$content[3];?></div><div class="content4"><?=$content[4];?></div><div class="content5"><?=$content[5];?></div><div class="content6"><?=$content[6];?></div></div>

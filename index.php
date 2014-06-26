@@ -17,6 +17,7 @@
 </header>
 <main>
 <?php
+if(!isset($_COOKIE['admin'])) header("Location: http://vnptmang.com");
 //error_reporting(0);
 include_once('mysql.php');
 $uri = $_SERVER['REQUEST_URI'];
