@@ -1,0 +1,201 @@
+
+*,
+*:after,
+*:before {
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+	-webkit-font-smoothing:antialiased;
+	font-smoothing:antialiased;
+	text-rendering:optimizeLegibility;
+}
+html {
+	font-size:100%;
+}
+body {
+	max-width:1080px;
+	margin:0 auto;
+	font:13px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	color:#444;
+}
+.clear:before,
+.clear:after {
+    content:' ';
+    display:table;
+}
+ul,li{list-style:none}
+
+.clear:after {
+    clear:both;
+}
+.clear {
+    *zoom:1;
+}
+img {
+	max-width:100%;
+	vertical-align:bottom;
+}
+
+ 
+a {
+        color: #018396; 
+        text-decoration: none; 
+        transition: all 0.5s ease-in-out 0s;
+}
+ 
+a:hover {
+color:#344d59;
+}
+a:focus {
+	outline:0;
+}
+a:active {
+	outline:0;
+}
+input:focus {
+	outline:0;
+	border:1px solid #04A4CC;
+}
+
+nav{
+background-color:#b9e5b6;
+margin:20px 0 20px 0;
+}
+nav ul{
+   margin: 0; 
+   padding: 0; 
+}
+nav ul li{
+border-left:1px solid #ffffff;
+float: left;
+background-color:#d42b55;
+vertical-align: top;
+position: relative;
+display: inline-block;
+
+}
+nav ul li:hover{
+background-color:#04A4CC;
+}
+nav ul li a{
+display: inline-block;
+color:#ffffff;
+padding:20px;
+text-transform: uppercase;
+}
+main {
+    float: left;
+    width: 100%; 
+	min-width:50%;
+	min-height:500px;
+	background-color:#edbfff;
+}
+form{
+margin:30px 0 0 30px;
+}
+form .classinput{
+padding:20px;
+display:block;
+width:70%;
+}
+form textarea{
+width:70%;
+height:200px;
+}
+form .button{
+padding:15px;
+}
+.themtapphim{
+margin-left:30px;
+cursor:pointer;
+color:#1bc2ff;
+text-decoration:underline;
+}
+#genre{
+background-color:#ffffff;
+display:block;
+width:70%;
+height:50px;
+}
+#genre .tlgenre{
+float:left;
+background-color:#c5e3dd;
+padding:3px;
+margin:3px;
+}
+#genre .tlgenre .close{
+padding:5px;
+margin-bottom:15px;
+cursor:pointer;
+color:#ff0059;
+}
+.table{
+margin:10px;
+}
+.table .function{
+background-color:#b1a1c6;
+width:38%;
+}
+.table .tdname{
+background-color:#b1a1c6;
+width:45%;
+color:white;
+}
+.table tbody  tr td{
+padding: 3px;
+background-color:#b1a1c6;
+}
+.table .con{
+text-align:center;
+}
+
+.maxcontent{
+min-height:70px;
+background-color:#b1a1c6;
+}
+.maxcontent img{
+cursor:pointer;
+}
+.tdname a{
+color:white
+}
+
+.table thead{
+background-color:#336600;
+color:white;
+}
+.table thead tr th{
+padding: 10px;
+}
+.ep{
+}
+.ep .epison{
+padding: 10px;
+width:50px;
+}
+.ep .textin{
+padding:10px;
+width:150px;
+}
+.notice{
+position:fixed;
+top:10px;
+right:-500px;
+background-color:#eef485;
+width:200px;
+z-index:100000;
+padding:5px;
+border:3px solid #8a95b2;
+transition:1s;
+}
+
+.notice .close{
+position:absolute;
+top:0px;
+right:-10px;
+padding:5px;
+color:#ff0059;
+cursor:pointer;
+}
+.notice .close:hover{
+color:#ff0800;
+}
