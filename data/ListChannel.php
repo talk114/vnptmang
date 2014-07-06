@@ -10,6 +10,7 @@ display:inline;
 cursor:pointer;
 background-color:#646464;
 color:white;
+padding:5px;
 }
 </style>
 <script>
@@ -20,7 +21,7 @@ if(suc.success==true){
 $('.notice').css({'right':10});
 $('.notice').text('Đã xóa thành công!');
 setTimeout(function(){$('.notice').css({'right':-500});}, 2000);
-$(this).parent().hide();
+$(this).parent('tr').hide();
 }else{
 $('.notice').css({'right':10});
 $('.notice').text('Lỗi không thể xóa được!');
