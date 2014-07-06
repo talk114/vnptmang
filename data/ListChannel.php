@@ -3,6 +3,14 @@ $sql = $con->prepare("Select * from `channel`");
 $sql->execute(array());
 $query = $sql->fetchAll(PDO::FETCH_ASSOC);
 ?>
+<style>
+</style>
+.delete{
+display:inline;
+cursor:pointer;
+background-color:#646464;
+color:white;
+}
 <script>
 $(function(){
 $('.delete').click(function(){
@@ -25,6 +33,7 @@ $('.notice').css({'right':-500});
 });
 });
 </script>
+
 <div class="notice"><span class="close">x</span></div>
 
 <table class="table">
@@ -38,7 +47,7 @@ foreach($query as $rows){
 ?>
 <tr>
 <td class="tdname"><div class="maxcontent"><?=$rows['url']?></div>
-<td class="function"><div class="maxcontent"><a href="/editChannel/<?=$rows['id']?>">Sửa Thông tin</a> / <span class="delete" idmv="<?=$rows['id']?>">Xóa</span></div>
+<td class="function"><div class="maxcontent"><a href="/editChannel/<?=$rows['id']?>">Sửa Thông tin</a> / <div class="delete" idmv="<?=$rows['id']?>">Xóa</div></div>
 <?php
 }
 ?>
