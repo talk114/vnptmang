@@ -4,13 +4,14 @@ $sql->execute(array());
 $query = $sql->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <style>
-</style>
+
 .delete{
 display:inline;
 cursor:pointer;
 background-color:#646464;
 color:white;
 }
+</style>
 <script>
 $(function(){
 $('.delete').click(function(){
