@@ -15,7 +15,7 @@ padding:5px;
 </style>
 <script>
 $(function(){
-$('#delete').click(function(){
+$('.delete').click(function(){
 $.post("/delChannel.php", {id:$(this).attr('idmv')}, function(suc){
 if(suc.success==true){
 $('.notice').css({'right':10});
@@ -50,7 +50,7 @@ foreach($query as $rows){
 <tr>
 <td class="tdname"><div class="maxcontent"><?=$rows['url']?></div>
 <td class="function"><div class="maxcontent"><a href="/editChannel/<?=$rows['id']?>">Sửa Thông tin</a></div>
-<td id="delete" idmv="<?=$rows['id']?>">Khôi phục
+<td class="delete" idmv="<?=$rows['id']?>">Khôi phục
 <?php
 }
 ?>
