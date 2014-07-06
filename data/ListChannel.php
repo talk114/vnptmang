@@ -38,7 +38,7 @@ foreach($query as $rows){
 ?>
 <tr>
 <td class="tdname"><div class="maxcontent"><?=$rows['url']?></div>
-<td class="function"><div class="maxcontent"><a href="/editChannel/<?=$rows['id']?>">Sửa Thông tin</a> / <a class="delete" idmv="<?=$rows['id']?>" href="#">Xóa</a></div>
+<td class="function"><div class="maxcontent"><a href="/editChannel/<?=$rows['id']?>">Sửa Thông tin</a> / <span class="delete" idmv="<?=$rows['id']?>">Xóa</span></div>
 <?php
 }
 ?>
