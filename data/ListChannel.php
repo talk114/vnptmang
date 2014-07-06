@@ -21,7 +21,7 @@ if(suc.success==true){
 $('.notice').css({'right':10});
 $('.notice').text('Đã xóa thành công!');
 setTimeout(function(){$('.notice').css({'right':-500});}, 2000);
-$(this).closest("tr").hide();
+$(this).parent("tr").remove();
 }else{
 $('.notice').css({'right':10});
 $('.notice').text('Lỗi không thể xóa được!');
@@ -48,7 +48,8 @@ foreach($query as $rows){
 ?>
 <tr>
 <td class="tdname"><div class="maxcontent"><?=$rows['url']?></div>
-<td class="function"><div class="maxcontent"><a href="/editChannel/<?=$rows['id']?>">Sửa Thông tin</a> / <div class="delete" idmv="<?=$rows['id']?>">Xóa</div></div>
+<td class="function"><div class="maxcontent"><a href="/editChannel/<?=$rows['id']?>">Sửa Thông tin</a></div>
+<td class="delete" idmv="<?=$rows['id']?>">Xóa
 <?php
 }
 ?>
