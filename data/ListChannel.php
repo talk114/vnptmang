@@ -21,7 +21,7 @@ if(suc.success==true){
 $('.notice').css({'right':10});
 $('.notice').text('Đã xóa thành công!');
 setTimeout(function(){$('.notice').css({'right':-500});}, 2000);
-$(this).parent('tr').hide();
+$(this).closest("tr").hide();
 }else{
 $('.notice').css({'right':10});
 $('.notice').text('Lỗi không thể xóa được!');
