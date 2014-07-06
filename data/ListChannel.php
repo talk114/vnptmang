@@ -1,5 +1,5 @@
 <?php
-$sql = $con->prepare("Select * from `channel`");
+$sql = $con->prepare("Select * from `channel` where trash=0");
 $sql->execute(array());
 $query = $sql->fetchAll(PDO::FETCH_ASSOC);
 ?>
