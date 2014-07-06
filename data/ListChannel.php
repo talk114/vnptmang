@@ -26,7 +26,6 @@ $(this).parent('tr').hide();
 $('.notice').css({'right':10});
 $('.notice').text('Lỗi không thể xóa được!');
 setTimeout(function(){$('.notice').css({'right':-500});}, 2000);
-
 }
 },"json");
 });
