@@ -11,7 +11,7 @@ $j=0;
 foreach($tv->fetchAll() as $row){
     $j++;
 ?>
-<input class="classinput" type="text" readonly name="url[<?=$j?>]" value="<?=$row['url']?>">
+<input class="button" type="text" readonly name="url[<?=$j?>]" value="<?=$row['url']?>">
 <input class="button" type="text" name="sx[<?=$j?>]" value="<?=$row['sort']?>"><br/>
 <?php
 }
