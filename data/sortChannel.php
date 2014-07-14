@@ -1,5 +1,5 @@
 <?php
-$group= extend1;
+$group= $extend1;
 $tv = $con->prepare("select * from `channel` where `groups` = ? order by `sort`");
 $tv->execute(array($group));
 $sl = $tv->rowCount();
