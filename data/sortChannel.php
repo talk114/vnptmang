@@ -26,6 +26,6 @@ $sx = $_POST[sx][$i];
 $query2 = $con->prepare("UPDATE `channel` SET `sort` = ? where `url` = ?");
 $query2->execute(array($sx, $kenh));
 }
-header("Location: quanly.php?i=ds");
+header("Location: /");
 }
 ?>
