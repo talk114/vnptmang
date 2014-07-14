@@ -16,16 +16,16 @@ padding:5px;
 <script>
 $(function(){
 $('.delete').click(function(){
-$.post("/delChannel.php", {id:$(this).attr('idmv')}, function(suc){
+$.post("/restoreChannel.php", {id:$(this).attr('idmv')}, function(suc){
 if(suc.success==true){
 $('.notice').css({'right':10});
-$('.notice').text('Đã xóa thành công!');
+$('.notice').text('Khôi phục thành công!');
 setTimeout(function(){$('.notice').css({'right':-500});}, 2000);
 $(this).parent('tr').remove();
 $(this).parent('tr').hide();
 }else{
 $('.notice').css({'right':10});
-$('.notice').text('Lỗi không thể xóa được!');
+$('.notice').text('Lỗi không thể khôi phục được!');
 setTimeout(function(){$('.notice').css({'right':-500});}, 2000);
 }
 },"json");
