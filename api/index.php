@@ -11,16 +11,16 @@
 <body>
 <header>
 <nav class="clear"><ul>
-<li><a href="../">Danh sách Kênh</a></li>
-<li><a href="/addChannel">Thêm kênh mới</a></li>
-<li><a href="/Trash">Thùng rác</a></li>
+<li><a href="/api/">Danh sách Kênh</a></li>
+<li><a href="addChannel">Thêm kênh mới</a></li>
+<li><a href="Trash">Thùng rác</a></li>
 <li>Sắp xếp<ul>
-<li><a href="/sortChannel/1">VTV</a></li>
-<li><a href="/sortChannel/2">VTC</a></li>
-<li><a href="/sortChannel/3">VTVCab</a></li>
-<li><a href="/sortChannel/4">Quốc tế</a></li>
-<li><a href="/sortChannel/5">Địa phương</a></li>
-<li><a href="/sortChannel/6">Quốc gia</a></li>
+<li><a href="sortChannel/1">VTV</a></li>
+<li><a href="sortChannel/2">VTC</a></li>
+<li><a href="sortChannel/3">VTVCab</a></li>
+<li><a href="sortChannel/4">Quốc tế</a></li>
+<li><a href="sortChannel/5">Địa phương</a></li>
+<li><a href="sortChannel/6">Quốc gia</a></li>
 </ul></li>
 </ul></nav>
 
