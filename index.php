@@ -10,6 +10,7 @@
 </head>
 <body>
 <header>
+WebTV
 <nav class="clear"><ul>
 <li><a href="../">Danh sách Movie</a></li>
 <li><a href="/addChannel">Thêm Movie mới</a></li>
