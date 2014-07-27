@@ -10,6 +10,7 @@
 </head>
 <body>
 <header>
+API
 <nav class="clear"><ul>
 <li><a href="/api/">Danh sách Kênh</a></li>
 <li><a href="addChannel">Thêm kênh mới</a></li>
