@@ -51,7 +51,7 @@ foreach($query as $rows){
 ?>
 <tr>
 <td class="tdname"><div class="maxcontent"><?=$rows['name']?></div>
-<td class="function"><div class="maxcontent"><a href="/editChannel/<?=$rows['id']?>">Sửa Thông tin</a></div>
+<td class="function"><div class="maxcontent"><a href="/api/index.php/editChannel/<?=$rows['id']?>">Sửa Thông tin</a></div>
 <td class="delete" idmv="<?=$rows['id']?>">Xóa
 <?php
 }
