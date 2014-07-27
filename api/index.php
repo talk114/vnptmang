@@ -31,7 +31,7 @@ if(!isset($_COOKIE['admin'])) header("Location: http://vnptmang.com");
 //error_reporting(0);
 include_once('/mysql.php');
 $uri = $_SERVER['REQUEST_URI'];
-list($null, $fun, $extend1, $extend2, $extend3) = explode('/', $uri);
+list($null, $folder, $fun, $extend1, $extend2, $extend3) = explode('/', $uri);
 if($fun=='') $fun = 'ListChannel';
 include_once("data/$fun.php");
 ?>
