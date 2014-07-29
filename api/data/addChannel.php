@@ -9,15 +9,35 @@ $query->execute(array(":name"=> $_POST['name'],":img"=> $_POST['img'],":numsv"=>
 header("Location: /");
 }else{
 ?>
+<script>
+$(function(){
+$('.themtapphim').click(function(){
+var crEp = $("#soserver").attr("value");
+var nextEp = parseInt(crEp)+1;
+$('.server').append("Tập "+nextEp+":<br><input type='text' class='classinput' name='server["+nextEp+"]' placeholder='Mã phim ...'>");
+$("#soserver").attr("value", nextEp);
+});
+});
+</script>
+
 <form name="up2" method="post">
 Tên kênh:
 <input class="classinput" type="text" name="name" placeholder="Tên kênh...">
+Tiêu đề:
+<input class="classinput" type="text" name="name" placeholder="Tiêu đề...">
 Link Ảnh:
 <input class="classinput" type="text" name="img" placeholder="Link ảnh....">
 Số Server:
 <input class="classinput" type="text" name="numsv" placeholder="Số server....">
 Nhóm:
 <input class="classinput" type="text" name="groups" placeholder="Nhóm....">
+<section id="server">
+Server 1:
+<input class="classinput" type="text" name="server[1]" placeholder="Link Server....">
+<input class="classinput" type="text" name="server[1]" placeholder="Link Server....">
+<div class="themtapphim">Thêm server</div>
+<input type="hidden" name="soserver" id="soserver" value="1">
+</section>
 <input class="button" type="submit" name="submit" value="Gửi">
 </form>
 <?php
