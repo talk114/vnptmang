@@ -9,7 +9,7 @@ $query->execute(array(":name"=> $_POST['name'],":img"=> $_POST['img'],":numsv"=>
 $idchannel = $query->lastInsertId();
 for($i=1; $i<=$_POST['soserver']; $i++){
 $server = $con->prepare("INSERT INTO `server`(`idchannel`, `server`, `url`, `type`, `device`) VALUES (:idchannel, :server, :url, :type, :device)");
-$server->execute(array(":idchannel"=> $idchannel, ":server"=>$i, ":url", ":type", ":device");
+$server->execute(array(":idchannel"=> $idchannel, ":server"=>$i, ":url"=>$_POST['url'][$i], ":type"=>$_POST['type'][$i], ":device"=>$_POST['device'][$i]);
 }
 header("Location: /");
 }else{
@@ -44,7 +44,7 @@ Nhóm:
 <section id="server">
 <div class="content">
 Server 1:
-<input class="classinput" type="text" name="server[1]" placeholder="Link Server....">
+<input class="classinput" type="text" name="url[1]" placeholder="Link Server....">
 <input class="mininput" type="text" name="type[1]" placeholder="Kiểu link....">
 <input class="mininput" type="text" name="device[1]" placeholder="Thiết bị....">
 <input type="button" class="delete" value="Xoá">
