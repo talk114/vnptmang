@@ -6,6 +6,11 @@ $row = $sql->fetch(PDO::FETCH_ASSOC);
 $next_sort = $row['MAX(sort)']+10;
 $query = $con->prepare("INSERT INTO `apichannel`(`name`,`imgsrc`,`numsv`,`groups`,`sort`) VALUES (:name,:img,:numsv,:groups,:sort)");
 $query->execute(array(":name"=> $_POST['name'],":img"=> $_POST['img'],":numsv"=> $_POST['numsv'],":groups"=> $_POST['groups'],":sort"=>$next_sort));
+$idchannel = $query->lastInsertId();
+for($i=1; $i<=$_POST['soserver']; $i++){
+$server = $con->prepare("INSERT INTO `server`(`idchannel`, `server`, `url`, `type`, `device`) VALUES (:idchannel, :server, :url, :type, :device)");
+$server->execute(array(":idchannel"=> $idchannel, ":server"=>$i, ":url", ":type", ":device");
+}
 header("Location: /");
 }else{
 ?>
@@ -14,7 +19,7 @@ $(function(){
 $('.themtapphim').click(function(){
 var crEp = $("#soserver").attr("value");
 var nextEp = parseInt(crEp)+1;
-$('.server').append("Tập "+nextEp+":<br><input type='text' class='classinput' name='server["+nextEp+"]' placeholder='Mã phim ...'><input class='classinput' type='text' name='type[1]' placeholder='Kiểu link....'><input class='classinput' type='text' name='device[1]' placeholder='Thiết bị....'>");
+$('.server').append("Server "+nextEp+":<br><input type='text' class='classinput' name='server["+nextEp+"]' placeholder='Link ...'><input class='mininput' type='text' name='type["+nextEp+"]' placeholder='Kiểu link....'><input class='mininput' type='text' name='device["+nextEp+"]' placeholder='Thiết bị....'>");
 $("#soserver").attr("value", nextEp);
 });
 });
@@ -34,8 +39,8 @@ Nhóm:
 <section id="server">
 Server 1:
 <input class="classinput" type="text" name="server[1]" placeholder="Link Server....">
-<input class="classinput" type="text" name="type[1]" placeholder="Kiểu link....">
-<input class="classinput" type="text" name="device[1]" placeholder="Thiết bị....">
+<input class="mininput" type="text" name="type[1]" placeholder="Kiểu link....">
+<input class="mininput" type="text" name="device[1]" placeholder="Thiết bị....">
 <div class="themtapphim">Thêm server</div>
 <input type="hidden" name="soserver" id="soserver" value="1">
 </section>

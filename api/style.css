@@ -97,6 +97,11 @@ padding:20px;
 display:block;
 width:70%;
 }
+form .miniput{
+padding:20px;
+display:block;
+width:100px;
+}
 form textarea{
 width:70%;
 height:200px;
