@@ -9,14 +9,14 @@ $query->execute(array(":name"=> $_POST['name'],":genre"=>$_POST['genre'],":img"=
 $idchannel = $query->lastInsertId();
 $sv=0;
 for($i=1; $i<=$_POST['soserver']; $i++){
-if(!strpos($i, $_POST["serverdeleted"])){
+if(!strpos($i, $_POST["serverdeleted"]) && $_POST['url'][$i]!=""){
 $sv++;
 $server = $con->prepare("INSERT INTO `server`(`idchannel`, `server`, `url`, `type`, `device`) VALUES (:idchannel, :server, :url, :type, :device)");
 $server->execute(array(":idchannel"=> $idchannel, ":server"=>$sv, ":url"=>$_POST['url'][$i], ":type"=>$_POST['type'][$i], ":device"=>$_POST['device'][$i]));
 }
+}
 $update = $con->prepare("Update apichannel set numsv = ? where id = ?");
 $update->execute(array($sv, $idchannel));
-}
 header("Location: /api/");
 }else{
 ?>
