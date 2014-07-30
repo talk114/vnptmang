@@ -4,8 +4,8 @@ $sql = $con->prepare("SELECT MAX(sort) FROM `apichannel` where `groups`=?");
 $sql->execute(array($_POST['groups']));
 $row = $sql->fetch(PDO::FETCH_ASSOC);
 $next_sort = $row['MAX(sort)']+10;
-$query = $con->prepare("INSERT INTO `apichannel`(`name`,`genre`,`imgsrc`,`numsv`,`groups`,`sort`) VALUES (:name,:genre:img,:numsv,:groups,:sort)");
-$query->execute(array(":name"=> $_POST['name'],":genre"=>$_POST['genre'],":img"=> $_POST['img'],":numsv"=> $_POST['numsv'],":groups"=> $_POST['groups'],":sort"=>$next_sort));
+$query = $con->prepare("INSERT INTO `apichannel`(`name`,`genre`,`imgsrc`,`groups`,`sort`) VALUES (:name,:genre:img,:groups,:sort)");
+$query->execute(array(":name"=> $_POST['name'],":genre"=>$_POST['genre'],":img"=> $_POST['img'],":groups"=> $_POST['groups'],":sort"=>$next_sort));
 $idchannel = $query->lastInsertId();
 $sv=0;
 for($i=1; $i<=$_POST['soserver']; $i++){
@@ -14,6 +14,8 @@ $sv++;
 $server = $con->prepare("INSERT INTO `server`(`idchannel`, `server`, `url`, `type`, `device`) VALUES (:idchannel, :server, :url, :type, :device)");
 $server->execute(array(":idchannel"=> $idchannel, ":server"=>$sv, ":url"=>$_POST['url'][$i], ":type"=>$_POST['type'][$i], ":device"=>$_POST['device'][$i]));
 }
+$update = $con->prepare("Update apichannel set numsv = ? where id = ?");
+$update->execute(array($sv, $idchannel));
 }
 header("Location: /api/");
 }else{
@@ -43,8 +45,6 @@ Tiêu đề:
 <input class="classinput" type="text" name="genre" placeholder="Tiêu đề...">
 Link Ảnh:
 <input class="classinput" type="text" name="img" placeholder="Link ảnh....">
-Số Server:
-<input class="classinput" type="text" name="numsv" placeholder="Số server....">
 Nhóm:
 <input class="classinput" type="text" name="groups" placeholder="Nhóm....">
 <section id="server">
