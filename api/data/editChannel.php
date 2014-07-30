@@ -1,30 +1,29 @@
 <?php
 if(isset($_POST['submit'])){
-$query = $con->prepare("UPDATE `apichannel` SET `name`=?,`imgsrc`=?,`numsv`=?, `groups`=? where id=?");
-$query->execute(array($_POST['name'],$_POST['img'],$_POST['numsv'],$_POST['groups'],$extend1));
-$idchannel = $_POST['idchannel'];
+$query = $con->prepare("UPDATE `apichannel` SET `name`=?,`imgsrc`=?,`groups`=? where id=?");
+$query->execute(array($_POST['name'],$_POST['img'],$_POST['groups'],$extend1));
 $sv=0;
 for($i=1; $i<=$_POST['soserver']; $i++){
 if(strpos($i, $_POST["deletedserver"])){
 //Xoá server
 $server=$con->prepare("DELETE FROM `server` where idchannel = ?  and server = ?");
-$server->execute(array($idchannel, $i));
+$server->execute(array($extend1, $i));
 }
 else if($i>$_POST["addedserver"]){
 //Thêm server
 $sv++;
 $server = $con->prepare("INSERT INTO `server`(`idchannel`, `server`, `url`, `type`, `device`) VALUES (:idchannel, :server, :url, :type, :device)");
-$server->execute(array(":idchannel"=> $idchannel, ":server"=>$sv, ":url"=>$_POST['url'][$i], ":type"=>$_POST['type'][$i], ":device"=>$_POST['device'][$i]));
+$server->execute(array(":idchannel"=> $extend1, ":server"=>$sv, ":url"=>$_POST['url'][$i], ":type"=>$_POST['type'][$i], ":device"=>$_POST['device'][$i]));
 }
 else{
 //Cập nhật server
 $sv++;
 $server = $con->prepare("UPDATE `server` SET `server`=?, `url`=?, `type`=?, `device`=? where `idchannel`=?");
-$server->execute(array($sv, $_POST['url'][$i], $_POST['type'][$i], $_POST['device'][$i], $idchannel));
+$server->execute(array($sv, $_POST['url'][$i], $_POST['type'][$i], $_POST['device'][$i], $extend1));
 }
 }
 $update = $con->prepare("Update apichannel set numsv = ? where id = ?");
-$update->execute(array($sv, $idchannel));
+$update->execute(array($sv, $extend1));
 header('Location: /api/');
 }else{
 $sql = $con->prepare("SELECT * FROM `apichannel` WHERE id=?");
@@ -85,7 +84,6 @@ Server <?=$rowssv['server']?>:
 <input type="hidden" name="soserver" id="soserver" value="<?=$row['numsv']?>">
 <input type="hidden" name="addedserver" id="addedserver" value="<?=$row['numsv']?>">
 <input type="hidden" name="deletededserver" id="deletededserver" value="">
-<input type="hidden" name="idchannel" value="<?=$row['id']?>">
 <input class="button" type="submit" name="submit" value="Gửi">
 </form>
 <div class="info">
