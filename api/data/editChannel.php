@@ -18,7 +18,7 @@ header('Location: /');
 $sql = $con->prepare("SELECT * FROM `apichannel` WHERE id=?");
 $sql->execute(array($extend1));
 $row =$sql->fetch(PDO::FETCH_ASSOC);
-$querysv = $con->prepare("SELECT * FROM `server` WHERE idchannel=?");
+$querysv = $con->prepare("SELECT * FROM `server` WHERE `idchannel`=?");
 $querysv->execute(array($extend1));
 ?>
 <script>
@@ -50,7 +50,7 @@ Nhóm:
 <section id="server">
 <?php
 $i=0;
-for($querysv->fetch(PDO::FETCH_ASSOC) as rowssv){
+foreach($querysv->fetch(PDO::FETCH_ASSOC) as rowssv){
 $i++;
 ?>
 <div class="content">
