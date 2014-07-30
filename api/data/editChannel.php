@@ -28,7 +28,7 @@ $server->execute(array($sv, $_POST['url'][$i], $_POST['type'][$i], $_POST['devic
 }
 $update = $con->prepare("Update `apichannel` set `numsv` = ? where `id` = ?");
 $update->execute(array($sv, $extend1));
-//header('Location: /api/');
+header('Location: /api/');
 }else{
 $sql = $con->prepare("SELECT * FROM `apichannel` WHERE id=?");
 $sql->execute(array($extend1));

@@ -97,13 +97,13 @@ padding:20px;
 display:block;
 width:70%;
 }
-form .miniput{
+form .mininput{
 padding:20px;
 display:block;
-width:100px;
+width:80px;
 }
 form textarea{
-width:70%;
+width:60%;
 height:200px;
 }
 form .button{
@@ -207,6 +207,7 @@ color:#ff0800;
 .delete{
 background-color:#ff0c3e;
 }
+
 #server{
 background-color:#dfdfd9;
 margin-top:50px;
