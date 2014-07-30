@@ -2,7 +2,7 @@
 if(isset($_POST['submit'])){
 $query = $con->prepare("UPDATE `apichannel` SET `name`=?,`imgsrc`=?,`numsv`=?, `groups`=? where id=?");
 $query->execute(array($_POST['name'],$_POST['img'],$_POST['numsv'],$_POST['groups'],$extend1));
-$idchannel = $con->lastInsertId();
+$idchannel = $_POST['idchannel'];
 $sv=0;
 for($i=1; $i<=$_POST['soserver']; $i++){
 if(strpos($i, $_POST["deletedserver"])){
@@ -85,6 +85,7 @@ Server <?=$rowssv['server']?>:
 <input type="hidden" name="soserver" id="soserver" value="<?=$row['numsv']?>">
 <input type="hidden" name="addedserver" id="addedserver" value="<?=$row['numsv']?>">
 <input type="hidden" name="deletededserver" id="deletededserver" value="">
+<input type="hidden" name="idchannel" value="<?=$row['id']?>">
 <input class="button" type="submit" name="submit" value="Gửi">
 </form>
 <div class="info">
