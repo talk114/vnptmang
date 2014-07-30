@@ -9,7 +9,7 @@ $query->execute(array(":name"=> $_POST['name'],":genre"=>$_POST['genre'],":img"=
 $idchannel = $con->lastInsertId();
 $sv=0;
 for($i=1; $i<=$_POST['soserver']; $i++){
-if(!strpos($i, $_POST["serverdeleted"]) && $_POST['url'][$i]!=""){
+if(!strpos($_POST["serverdeleted"], "$i") && $_POST['url'][$i]!=""){
 $sv++;
 $server = $con->prepare("INSERT INTO `server`(`idchannel`, `server`, `url`, `type`, `device`) VALUES (:idchannel, :server, :url, :type, :device)");
 $server->execute(array(":idchannel"=> $idchannel, ":server"=>$sv, ":url"=>$_POST['url'][$i], ":type"=>$_POST['type'][$i], ":device"=>$_POST['device'][$i]));
@@ -30,7 +30,6 @@ $('#server').append("<div class='content'>Server "+nextEp+":<br><input type='tex
 $("#soserver").attr("value", nextEp);
 deletesv();
 });
-
 });
 function deletesv(){
 $('.delete').click(function(){

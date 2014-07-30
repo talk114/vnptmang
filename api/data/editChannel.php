@@ -3,13 +3,15 @@ if(isset($_POST['submit'])){
 $query = $con->prepare("UPDATE `apichannel` SET `name`=?,`imgsrc`=?,`groups`=? where id=?");
 $query->execute(array($_POST['name'],$_POST['img'],$_POST['groups'],$extend1));
 $sv=0;
+echo $_POST["deletededserver"];
+
 for($i=1; $i<=$_POST['soserver']; $i++){
-if(strpos($i, $_POST["deletedserver"])){
+if(strpos($_POST["deletededserver"], "$i")){
 //Xoá server
 $server=$con->prepare("DELETE FROM `server` where idchannel = ?  and server = ?");
 $server->execute(array($extend1, $i));
 }
-else if($i>$_POST["addedserver"]){
+else if($i>$_POST["addedserver"]&& $_POST['url'][$i]!=""){
 //Thêm server
 $sv++;
 $server = $con->prepare("INSERT INTO `server`(`idchannel`, `server`, `url`, `type`, `device`) VALUES (:idchannel, :server, :url, :type, :device)");
@@ -17,14 +19,16 @@ $server->execute(array(":idchannel"=> $extend1, ":server"=>$sv, ":url"=>$_POST['
 }
 else{
 //Cập nhật server
+if($_POST['url'][$i]!=""){
 $sv++;
 $server = $con->prepare("UPDATE `server` SET `server`=?, `url`=?, `type`=?, `device`=? where `idchannel`=?");
 $server->execute(array($sv, $_POST['url'][$i], $_POST['type'][$i], $_POST['device'][$i], $extend1));
 }
 }
-$update = $con->prepare("Update apichannel set numsv = ? where id = ?");
+}
+$update = $con->prepare("Update `apichannel` set `numsv` = ? where `id` = ?");
 $update->execute(array($sv, $extend1));
-header('Location: /api/');
+//header('Location: /api/');
 }else{
 $sql = $con->prepare("SELECT * FROM `apichannel` WHERE id=?");
 $sql->execute(array($extend1));
@@ -35,21 +39,23 @@ $querysv->execute(array($extend1));
 <script>
 $(function(){
 $('.themtapphim').click(function(){
+deletesv();
 var crEp = $("#soserver").attr("value");
 var nextEp = parseInt(crEp)+1;
-$('#server').append("<div class='content'>Server "+nextEp+":<br><input type='text' class='classinput' name='server["+nextEp+"]' placeholder='Link ...'><input class='mininput' type='text' name='type["+nextEp+"]' placeholder='Kiểu link....'><input class='mininput' type='text' name='device["+nextEp+"]' placeholder='Thiết bị....'><input type='button' class='delete' sequence="+nextEp+" value='Xoá'></div>");
+$('#server').append("<div class='content'>Server "+nextEp+":<br><input type='text' class='classinput' name='url["+nextEp+"]' placeholder='Link ...'><input class='mininput' type='text' name='type["+nextEp+"]' placeholder='Kiểu link....'><input class='mininput' type='text' name='device["+nextEp+"]' placeholder='Thiết bị....'><input type='button' class='delete' sequence="+nextEp+" value='Xoá'></div>");
 $("#soserver").attr("value", nextEp);
 deletesv();
 });
-deletesv();
+
 });
 function deletesv(){
 $('.delete').click(function(){
+console.log(parseInt($(this).attr('sequence')) +" "+parseInt($("#addedserver").val()));
 $(this).parent().remove();
-if(intParse($(this).attr('sequence'))< intParse($("#addedserver").val())){
-var str = $("#deletededserver").val();
+if(parseInt($(this).attr('sequence'))<= parseInt($("#addedserver").val())){
+var str = $(".deletededserver").val();
 str += ","+$(this).attr("sequence");
-$("#deletededserver").val(str);
+$(".deletededserver").val(str);
 }
 });
 }
@@ -81,9 +87,9 @@ Server <?=$rowssv['server']?>:
 ?>
 </section>
 <div class="themtapphim">Thêm server</div>
-<input type="hidden" name="soserver" id="soserver" value="<?=$row['numsv']?>">
-<input type="hidden" name="addedserver" id="addedserver" value="<?=$row['numsv']?>">
-<input type="hidden" name="deletededserver" id="deletededserver" value="">
+<input type="hidden" name="soserver" id="soserver" value="<?php if($row['numsv']=="") echo "0"; else echo $row['numsv']; ?>">
+<input type="hidden" name="addedserver" id="addedserver" value="<?php if($row['numsv']=="") echo "0"; else echo $row['numsv']; ?>">
+<input type="hidden" name="deletededserver" class="deletededserver">
 <input class="button" type="submit" name="submit" value="Gửi">
 </form>
 <div class="info">
