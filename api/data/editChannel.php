@@ -2,7 +2,7 @@
 if(isset($_POST['submit'])){
 $query = $con->prepare("UPDATE `apichannel` SET `name`=?,`imgsrc`=?,`numsv`=?, `groups`=? where id=?");
 $query->execute(array($_POST['name'],$_POST['img'],$_POST['numsv'],$_POST['groups'],$extend1));
-$idchannel = $query->lastInsertId();
+$idchannel = $con->lastInsertId();
 $sv=0;
 for($i=1; $i<=$_POST['soserver']; $i++){
 if(!strpos($i, $_POST["serverdeleted"])){
@@ -12,7 +12,6 @@ $server->execute(array(":idchannel"=> $idchannel, ":server"=>$sv, ":url"=>$_POST
 }
 $update = $con->prepare("Update apichannel set numsv = ? where id = ?");
 $update->execute(array($sv, $idchannel));
-
 
 header('Location: /');
 }else{

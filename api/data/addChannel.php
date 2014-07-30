@@ -6,7 +6,7 @@ $row = $sql->fetch(PDO::FETCH_ASSOC);
 $next_sort = $row['MAX(sort)']+10;
 $query = $con->prepare("INSERT INTO `apichannel`(`name`,`genre`,`imgsrc`,`groups`,`sort`) VALUES (:name,:genre:img,:groups,:sort)");
 $query->execute(array(":name"=> $_POST['name'],":genre"=>$_POST['genre'],":img"=> $_POST['img'],":groups"=> $_POST['groups'],":sort"=>$next_sort));
-$idchannel = $query->lastInsertId();
+$idchannel = $con->lastInsertId();
 $sv=0;
 for($i=1; $i<=$_POST['soserver']; $i++){
 if(!strpos($i, $_POST["serverdeleted"]) && $_POST['url'][$i]!=""){
