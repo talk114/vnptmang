@@ -10,9 +10,10 @@ $sv++;
 $server = $con->prepare("INSERT INTO `server`(`idchannel`, `server`, `url`, `type`, `device`) VALUES (:idchannel, :server, :url, :type, :device)");
 $server->execute(array(":idchannel"=> $idchannel, ":server"=>$sv, ":url"=>$_POST['url'][$i], ":type"=>$_POST['type'][$i], ":device"=>$_POST['device'][$i]));
 }
+
+}
 $update = $con->prepare("Update apichannel set numsv = ? where id = ?");
 $update->execute(array($sv, $idchannel));
-
 header('Location: /');
 }else{
 $sql = $con->prepare("SELECT * FROM `apichannel` WHERE id=?");
@@ -55,7 +56,7 @@ Nhóm:
 <section id="server">
 <?php
 $i=0;
-foreach($querysv->fetch(PDO::FETCH_ASSOC) as rowssv){
+foreach($querysv->fetchAll() as rowssv){
 $i++;
 ?>
 <div class="content">
