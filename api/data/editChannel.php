@@ -10,7 +10,7 @@ if(strpos($i, $_POST["deletedserver"])){
 $server=$con->prepare("DELETE FROM `server` where idchannel = ?  and server = ?");
 $server->execute(array($idchannel, $i);
 }
-else if(strpos($i, $_POST["addedserver"])){
+else if($i>$_POST["addedserver"]){
 //Thêm server
 $sv++;
 $server = $con->prepare("INSERT INTO `server`(`idchannel`, `server`, `url`, `type`, `device`) VALUES (:idchannel, :server, :url, :type, :device)");
@@ -47,11 +47,11 @@ deletesv();
 function deletesv(){
 $('.delete').click(function(){
 $(this).parent().remove();
-int i = parseInt($("#soserver").val())-1;
-$("#soserver").val(i);
-var str = $("#serverdeleted").val();
+if(intParse($(this).attr('sequence'))< intParse($("#addedserver").val())){
+var str = $("#deletededserver").val();
 str += ","+$(this).attr("sequence");
-$("#serverdeleted").val(str);
+$("#deletededserver").val(str);
+}
 });
 }
 </script>
@@ -83,7 +83,7 @@ Server <?=$rowssv['server']?>:
 </section>
 <div class="themtapphim">Thêm server</div>
 <input type="hidden" name="soserver" id="soserver" value="<?=$row['numsv']?>">
-<input type="hidden" name="addedserver" id="addedserver" value="">
+<input type="hidden" name="addedserver" id="addedserver" value="<?=$row['numsv']?>">
 <input type="hidden" name="deletededserver" id="deletededserver" value="">
 <input class="button" type="submit" name="submit" value="Gửi">
 </form>
