@@ -38,27 +38,26 @@ $querysv->execute(array($extend1));
 ?>
 <script>
 $(function(){
+$('.delete').click(function(){
+$(this).parent().remove();
+if(parseInt($(this).attr('sequence'))<= parseInt($("#addedserver").val())){
+var str = $(".deletededserver").val();
+str += ","+$(this).attr("sequence")+" ";
+$(".deletededserver").val(str);
+}
+});
+
 $('.themtapphim').click(function(){
-deletesv();
 var crEp = $("#soserver").attr("value");
 var nextEp = parseInt(crEp)+1;
 $('#server').append("<div class='content'>Server "+nextEp+":<br><input type='text' class='classinput' name='url["+nextEp+"]' placeholder='Link ...'><input class='mininput' type='text' name='type["+nextEp+"]' placeholder='Kiểu link....'><input class='mininput' type='text' name='device["+nextEp+"]' placeholder='Thiết bị....'><input type='button' class='delete' sequence="+nextEp+" value='Xoá'></div>");
 $("#soserver").attr("value", nextEp);
-deletesv();
-});
+$('.delete').click(function(){
+$(this).parent().remove();
+});});
 
 });
-function deletesv(){
-$('.delete').click(function(){
-console.log(parseInt($(this).attr('sequence')) +" "+parseInt($("#addedserver").val()));
-$(this).parent().remove();
-if(parseInt($(this).attr('sequence'))<= parseInt($("#addedserver").val())){
-var str = $(".deletededserver").val();
-str += ","+$(this).attr("sequence");
-$(".deletededserver").val(str);
-}
-});
-}
+
 </script>
 <form name="up2" method="post">
 Tên kênh:
