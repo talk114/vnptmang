@@ -5,12 +5,23 @@ $query->execute(array($_POST['name'],$_POST['img'],$_POST['numsv'],$_POST['group
 $idchannel = $con->lastInsertId();
 $sv=0;
 for($i=1; $i<=$_POST['soserver']; $i++){
-if(!strpos($i, $_POST["serverdeleted"])){
+if(strpos($i, $_POST["deletedserver"])){
+//Xoá server
+$server=$con->prepare("DELETE FROM `server` where idchannel = ?  and server = ?");
+$server->execute(array($idchannel, $i);
+}
+else if(strpos($i, $_POST["addedserver"])){
+//Thêm server
 $sv++;
 $server = $con->prepare("INSERT INTO `server`(`idchannel`, `server`, `url`, `type`, `device`) VALUES (:idchannel, :server, :url, :type, :device)");
 $server->execute(array(":idchannel"=> $idchannel, ":server"=>$sv, ":url"=>$_POST['url'][$i], ":type"=>$_POST['type'][$i], ":device"=>$_POST['device'][$i]));
 }
-
+else{
+//Cập nhật server
+$sv++;
+$server = $con->prepare("UPDATE `server` SET `server`=?, `url`=?, `type`=?, `device`=? where `idchannel`=?");
+$server->execute(array($sv, $_POST['url'][$i], $_POST['type'][$i], $_POST['device'][$i], $idchannel));
+}
 }
 $update = $con->prepare("Update apichannel set numsv = ? where id = ?");
 $update->execute(array($sv, $idchannel));
