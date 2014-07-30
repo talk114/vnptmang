@@ -34,6 +34,7 @@ var i = parseInt($("#soserver").val());
 $("#soserver").val(i-1);
 var str = $("#serverdeleted").val();
 str += ","+$(this).attr("sequence");
+$("#serverdeleted").val(str);
 });
 });
 </script>

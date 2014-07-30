@@ -33,8 +33,9 @@ $('.delete').click(function(){
 $(this).parent().remove();
 var i = parseInt($("#soserver").val());
 $("#soserver").val(i-1);
-var str = $("#serverdeleted").val();
+var str = $("#deletededserver").val();
 str += ","+$(this).attr("sequence");
+$("#deletededserver").val(str);
 });
 });
 </script>
@@ -66,7 +67,8 @@ Server <?=$rowssv['server']?>:
 </section>
 <div class="themtapphim">Thêm server</div>
 <input type="hidden" name="soserver" id="soserver" value="<?=$row['numsv']?>">
-<input type="hidden" name="serverdeleted" id="serverdeleted" value="">
+<input type="hidden" name="addedserver" id="addedserver" value="">
+<input type="hidden" name="deletededserver" id="deletededserver" value="">
 <input class="button" type="submit" name="submit" value="Gửi">
 </form>
 <div class="info">
