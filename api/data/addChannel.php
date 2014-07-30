@@ -9,7 +9,7 @@ $query->execute(array(":name"=> $_POST['name'],":img"=> $_POST['img'],":numsv"=>
 $idchannel = $query->lastInsertId();
 for($i=1; $i<=$_POST['soserver']; $i++){
 $server = $con->prepare("INSERT INTO `server`(`idchannel`, `server`, `url`, `type`, `device`) VALUES (:idchannel, :server, :url, :type, :device)");
-$server->execute(array(":idchannel"=> $idchannel, ":server"=>$i, ":url"=>$_POST['url'][$i], ":type"=>$_POST['type'][$i], ":device"=>$_POST['device'][$i]);
+$server->execute(array(":idchannel"=> $idchannel, ":server"=>$i, ":url"=>$_POST['url'][$i], ":type"=>$_POST['type'][$i], ":device"=>$_POST['device'][$i]));
 }
 header("Location: /");
 }else{
