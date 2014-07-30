@@ -56,7 +56,7 @@ Nhóm:
 <section id="server">
 <?php
 $i=0;
-foreach($querysv->fetchAll() as rowssv){
+foreach($querysv->fetchAll() as $rowssv){
 $i++;
 ?>
 <div class="content">
