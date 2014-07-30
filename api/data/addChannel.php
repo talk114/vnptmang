@@ -49,9 +49,9 @@ Server 1:
 <input class="mininput" type="text" name="device[1]" placeholder="Thiết bị....">
 <input type="button" class="delete" value="Xoá">
 </div>
+</section>
 <div class="themtapphim">Thêm server</div>
 <input type="hidden" name="soserver" id="soserver" value="1">
-</section>
 <input class="button" type="submit" name="submit" value="Gửi">
 </form>
 <div class="info">
