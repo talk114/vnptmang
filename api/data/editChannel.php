@@ -35,8 +35,8 @@ deletesv();
 function deletesv(){
 $('.delete').click(function(){
 $(this).parent().remove();
-var i = parseInt($("#soserver").val());
-$("#soserver").val(i-1);
+int i = parseInt($("#soserver").val())-1;
+$("#soserver").val(i);
 var str = $("#serverdeleted").val();
 str += ","+$(this).attr("sequence");
 $("#serverdeleted").val(str);
