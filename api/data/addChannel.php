@@ -19,8 +19,13 @@ $(function(){
 $('.themtapphim').click(function(){
 var crEp = $("#soserver").attr("value");
 var nextEp = parseInt(crEp)+1;
-$('.server').append("Server "+nextEp+":<br><input type='text' class='classinput' name='server["+nextEp+"]' placeholder='Link ...'><input class='mininput' type='text' name='type["+nextEp+"]' placeholder='Kiểu link....'><input class='mininput' type='text' name='device["+nextEp+"]' placeholder='Thiết bị....'>");
+$('#server').append("<div class='content'>Server "+nextEp+":<br><input type='text' class='classinput' name='server["+nextEp+"]' placeholder='Link ...'><input class='mininput' type='text' name='type["+nextEp+"]' placeholder='Kiểu link....'><input class='mininput' type='text' name='device["+nextEp+"]' placeholder='Thiết bị....'><input type='button' class='delete' value='Xoá'></div>");
 $("#soserver").attr("value", nextEp);
+});
+$('.delete').click(function(){
+$(this).parent().remove();
+var i = parseInt($("#soserver").val());
+$("#soserver").val(i-1);
 });
 });
 </script>
@@ -37,10 +42,13 @@ Số Server:
 Nhóm:
 <input class="classinput" type="text" name="groups" placeholder="Nhóm....">
 <section id="server">
+<div class="content">
 Server 1:
 <input class="classinput" type="text" name="server[1]" placeholder="Link Server....">
 <input class="mininput" type="text" name="type[1]" placeholder="Kiểu link....">
 <input class="mininput" type="text" name="device[1]" placeholder="Thiết bị....">
+<input type="button" class="delete" value="Xoá">
+</div>
 <div class="themtapphim">Thêm server</div>
 <input type="hidden" name="soserver" id="soserver" value="1">
 </section>
