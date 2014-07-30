@@ -23,11 +23,16 @@ header("Location: /api/");
 <script>
 $(function(){
 $('.themtapphim').click(function(){
+deletesv();
 var crEp = $("#soserver").attr("value");
 var nextEp = parseInt(crEp)+1;
 $('#server').append("<div class='content'>Server "+nextEp+":<br><input type='text' class='classinput' name='server["+nextEp+"]' placeholder='Link ...'><input class='mininput' type='text' name='type["+nextEp+"]' placeholder='Kiểu link....'><input class='mininput' type='text' name='device["+nextEp+"]' placeholder='Thiết bị....'><input type='button' class='delete' sequence="+nextEp+" value='Xoá'></div>");
 $("#soserver").attr("value", nextEp);
+deletesv();
 });
+
+});
+function deletesv(){
 $('.delete').click(function(){
 $(this).parent().remove();
 var i = parseInt($("#soserver").val());
@@ -36,7 +41,7 @@ var str = $("#serverdeleted").val();
 str += ","+$(this).attr("sequence");
 $("#serverdeleted").val(str);
 });
-});
+}
 </script>
 
 <form name="up2" method="post">
