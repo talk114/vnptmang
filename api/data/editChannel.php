@@ -8,7 +8,7 @@ for($i=1; $i<=$_POST['soserver']; $i++){
 if(strpos($i, $_POST["deletedserver"])){
 //Xoá server
 $server=$con->prepare("DELETE FROM `server` where idchannel = ?  and server = ?");
-$server->execute(array($idchannel, $i);
+$server->execute(array($idchannel, $i));
 }
 else if($i>$_POST["addedserver"]){
 //Thêm server
