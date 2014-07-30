@@ -4,7 +4,7 @@ $sql = $con->prepare("SELECT MAX(sort) FROM `apichannel` where `groups`=?");
 $sql->execute(array($_POST['groups']));
 $row = $sql->fetch(PDO::FETCH_ASSOC);
 $next_sort = $row['MAX(sort)']+10;
-$query = $con->prepare("INSERT INTO `apichannel`(`name`,`genre`,`imgsrc`,`groups`,`sort`) VALUES (:name,:genre:img,:groups,:sort)");
+$query = $con->prepare("INSERT INTO `apichannel`(`name`,`genre`,`imgsrc`,`groups`,`sort`) VALUES (:name,:genre,:img,:groups,:sort)");
 $query->execute(array(":name"=> $_POST['name'],":genre"=>$_POST['genre'],":img"=> $_POST['img'],":groups"=> $_POST['groups'],":sort"=>$next_sort));
 $idchannel = $con->lastInsertId();
 $sv=0;
