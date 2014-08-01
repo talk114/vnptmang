@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 if(isset($_POST['submit'])){
 $query = $con->prepare("UPDATE `apichannel` SET `name`=?,`imgsrc`=?,`groups`=? where id=?");
 $query->execute(array($_POST['name'],$_POST['img'],$_POST['groups'],$extend1));
@@ -50,7 +50,7 @@ $(".deletededserver").val(str);
 $('.themtapphim').click(function(){
 var crEp = $("#soserver").attr("value");
 var nextEp = parseInt(crEp)+1;
-$('#server').append("<div class='content'>Server "+nextEp+":<br><input type='text' class='classinput' name='url["+nextEp+"]' placeholder='Link ...'><input class='mininput' type='text' name='type["+nextEp+"]' placeholder='Kiểu link....'><input class='mininput' type='text' name='device["+nextEp+"]' placeholder='Thiết bị....'><input type='button' class='delete' sequence="+nextEp+" value='Xoá'></div>");
+$('#server').append("<div class='content'>Server "+nextEp+":<br><input type='text' class='classinput' name='url["+nextEp+"]' placeholder='Link ...'><input class='mininput' type='text' name='type["+nextEp+"]' placeholder='Kiểu link....'><input class='mininput' type='text' name='device["+nextEp+"]' placeholder='Thiết bị....'><input type='button' class='delete' sequence="+nextEp+" value='Xoá'><div class='clear'></div></div>");
 $("#soserver").attr("value", nextEp);
 $('.delete').click(function(){
 $(this).parent().remove();
@@ -61,13 +61,13 @@ $(this).parent().remove();
 </script>
 <form name="up2" method="post">
 Tên kênh:
-<input class="classinput" type="text" name="name" placeholder="Tên kênh..." value="<?=$row['name']?>">
+<input class="classinput" type="text" name="name" placeholder="Tên kênh..." value="<?=$row['name']?>"><div class="clear"></div>
 Tiêu đề:
-<input class="classinput" type="text" name="genre" placeholder="Tiêu đề...." value="<?=$row['genre']?>">
+<input class="classinput" type="text" name="genre" placeholder="Tiêu đề...." value="<?=$row['genre']?>"><div class="clear"></div>
 Link Ảnh:
-<input class="classinput" type="text" name="img" placeholder="Link ảnh...." value="<?=$row['imgsrc']?>">
+<input class="classinput" type="text" name="img" placeholder="Link ảnh...." value="<?=$row['imgsrc']?>"><div class="clear"></div>
 Nhóm:
-<input class="classinput" type="text" name="groups" placeholder="Nhóm...." value="<?=$row['groups']?>">
+<input class="classinput" type="text" name="groups" placeholder="Nhóm...." value="<?=$row['groups']?>"><div class="clear"></div>
 <section id="server">
 <?php
 $i=0;
@@ -79,7 +79,7 @@ Server <?=$rowssv['server']?>:
 <input class="classinput" type="text" name="url[<?=$i?>]" value="<?=$rowssv['url']?>" placeholder="Link Server....">
 <input class="mininput" type="text" name="type[<?=$i?>]" value="<?=$rowssv['type']?>" placeholder="Kiểu link....">
 <input class="mininput" type="text" name="device[<?=$i?>]" value="<?=$rowssv['device']?>" placeholder="Thiết bị....">
-<input type="button" class="delete" sequence=<?=$i?> value="Xoá">
+<input type="button" class="delete" sequence=<?=$i?> value="Xoá"><div class="clear"></div>
 </div>
 <?php
 }

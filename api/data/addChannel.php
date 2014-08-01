@@ -26,7 +26,7 @@ $('.themtapphim').click(function(){
 deletesv();
 var crEp = $("#soserver").attr("value");
 var nextEp = parseInt(crEp)+1;
-$('#server').append("<div class='content'>Server "+nextEp+":<br><input type='text' class='classinput' name='url["+nextEp+"]' placeholder='Link ...'><input class='mininput' type='text' name='type["+nextEp+"]' placeholder='Kiểu link....'><input class='mininput' type='text' name='device["+nextEp+"]' placeholder='Thiết bị....'><input type='button' class='delete' sequence="+nextEp+" value='Xoá'></div>");
+$('#server').append("<div class='content'>Server "+nextEp+":<br><input type='text' class='classinput' name='url["+nextEp+"]' placeholder='Link ...'><input class='mininput' type='text' name='type["+nextEp+"]' placeholder='Kiểu link....'><input class='mininput' type='text' name='device["+nextEp+"]' placeholder='Thiết bị....'><input type='button' class='delete' sequence="+nextEp+" value='Xoá'><div class='clear'></div></div>");
 $("#soserver").attr("value", nextEp);
 deletesv();
 });
@@ -44,12 +44,16 @@ $(this).parent().remove();
 <form name="up2" method="post">
 Tên kênh:
 <input class="classinput" type="text" name="name" placeholder="Tên kênh...">
+<div class="clear"></div>
 Tiêu đề:
 <input class="classinput" type="text" name="genre" placeholder="Tiêu đề...">
+<div class="clear"></div>
 Link Ảnh:
 <input class="classinput" type="text" name="img" placeholder="Link ảnh....">
+<div class="clear"></div>
 Nhóm:
 <input class="classinput" type="text" name="groups" placeholder="Nhóm....">
+<div class="clear"></div>
 <section id="server">
 <div class="content">
 Server 1:
@@ -58,6 +62,7 @@ Server 1:
 <input class="mininput" type="text" name="device[1]" placeholder="Thiết bị....">
 <input type="button" class="delete" sequence=1 value="Xoá">
 </div>
+<div class="clear"></div>
 </section>
 <div class="themtapphim">Thêm server</div>
 <input type="hidden" name="soserver" id="soserver" value="1">
