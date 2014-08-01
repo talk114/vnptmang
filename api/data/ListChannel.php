@@ -16,12 +16,12 @@ padding:5px;
 <script>
 $(function(){
 $('.delete').click(function(){
-$.post("/delChannel.php", {id:$(this).attr('idmv')}, function(suc){
+$.post("/api/delChannel.php", {id:$(this).attr('idmv')}, function(suc){
 if(suc.success==true){
 $('.notice').css({'right':10});
 $('.notice').text('Đã xóa thành công!');
 setTimeout(function(){$('.notice').css({'right':-500});}, 2000);
-$.post("/reloadListChannel.php", function(data){
+$.post("/api/reloadListChannel.php", function(data){
 $(".table tbody").html(data);
 });
 

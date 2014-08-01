@@ -92,11 +92,16 @@ Server <?=$rowssv['server']?>:
 <input class="button" type="submit" name="submit" value="Gửi">
 </form>
 <div class="info">
-<em style="padding-left:100px">1. M3U8, RTMP<br>
-2. HTV, VTVplus, VTVPlay<br>
+<em style="padding-left:100px">
+1. M3U8, RTMP<br>
+2.VNN
 3. FPT<br>
 4. VNPT<br>
 5. Clip<br>
+6. HTV<br>
+7. VTVplus<br>
+8. VTVPlay<br>
+9. Yeah1<br>
 Thiết bị:<br>
 0. Tất cả<br>
 1. PC

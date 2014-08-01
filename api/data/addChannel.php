@@ -66,10 +66,14 @@ Server 1:
 </form>
 <div class="info">
 <em>1. M3U8, RTMP<br>
-2. HTV, VTVplus, VTVPlay<br>
+2.VNN
 3. FPT<br>
 4. VNPT<br>
 5. Clip<br>
+6. HTV<br>
+7. VTVplus<br>
+8. VTVPlay<br>
+9. Yeah1<br>
 </em>
 </div>
 <?php
