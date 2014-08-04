@@ -69,6 +69,7 @@ Server 1:
 <input type="hidden" name="serverdeleted" id="serverdeleted" value="">
 <input class="button" type="submit" name="submit" value="Gửi">
 </form>
+<div class="clear"></div>
 <div class="info">
 <em>1. M3U8, RTMP<br>
 2.VNN

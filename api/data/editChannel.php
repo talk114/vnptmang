@@ -21,8 +21,8 @@ else{
 //Cập nhật server
 if($_POST['url'][$i]!=""){
 $sv++;
-$server = $con->prepare("UPDATE `server` SET `server`=?, `url`=?, `type`=?, `device`=? where `idchannel`=?");
-$server->execute(array($sv, $_POST['url'][$i], $_POST['type'][$i], $_POST['device'][$i], $extend1));
+$server = $con->prepare("UPDATE `server` SET `server` = ?, `url`=?, `type`=?, `device`=? where `idchannel`=? and `server` = ?");
+$server->execute(array($sv, $_POST['url'][$i], $_POST['type'][$i], $_POST['device'][$i], $extend1,$i));
 }
 }
 }
@@ -91,6 +91,7 @@ Server <?=$rowssv['server']?>:
 <input type="hidden" name="deletededserver" class="deletededserver">
 <input class="button" type="submit" name="submit" value="Gửi">
 </form>
+<div class="clear"></div>
 <div class="info">
 <em style="padding-left:100px">
 1. M3U8, RTMP<br>
