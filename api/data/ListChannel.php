@@ -65,8 +65,8 @@ $str .= $arr[$row['type']]." ,";
 <tr>
 <td class="tdname"><div class="maxcontent"><?=$rows['name']?></div>
 <td class="function"><div class="maxcontent"><a href="/api/index.php/editChannel/<?=$rows['id']?>">Sửa Thông tin</a></div>
-<td class="detail"><div class="maxcontent"><?=$i?></div>
-<td class="tdname"><div class="maxcontent"><?=$str?></div>
+<td class="tdname"><div class="maxcontent"><?=$i?></div>
+<td class="detail"><div class="maxcontent"><?=$str?></div>
 <td class="delete" idmv="<?=$rows['id']?>">Xóa
 <?php
 }
