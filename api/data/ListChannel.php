@@ -45,13 +45,27 @@ $('.notice').css({'right':-500});
 <tr>
 <th>Tên kênh
 <th>Chức năng
+<th>Số Server
+<th>Chi tiết Server
+
 <tbody>
 <?php
+$arr = array("Link M3u8", "VNN", "FPT", "VNPT", "Clip", "HTVOnline", "VTVplus", "VTVplay", "Social");
 foreach($query as $rows){
+$sql2 = $con->prepare("Select * from `server` where idchannel = ?");
+$sql2->execute(array($rows['id']));
+$r = $sql2->fetchAll(PDO::FETCH_ASSOC);
+$num_rpw = $r->rowCount();
+$str ="";
+foreach($r as $row){
+$str .= $arr[$row['type']]." ,";
+}
 ?>
 <tr>
 <td class="tdname"><div class="maxcontent"><?=$rows['name']?></div>
 <td class="function"><div class="maxcontent"><a href="/api/index.php/editChannel/<?=$rows['id']?>">Sửa Thông tin</a></div>
+<td class=""><div class="maxcontent"><?=$num_rpw?></div>
+<td class=""><div class="maxcontent"></div>
 <td class="delete" idmv="<?=$rows['id']?>">Xóa
 <?php
 }
