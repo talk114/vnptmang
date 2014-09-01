@@ -102,9 +102,6 @@ Server <?=$rowssv['server']?>:
 7. VTVplus<br>
 8. VTVPlay<br>
 9. Yeah1<br>
-Thiết bị:<br>
-0. Tất cả<br>
-1. PC
 </em>
 </div>
 <?php
