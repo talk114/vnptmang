@@ -55,18 +55,18 @@ foreach($query as $rows){
 $sql2 = $con->prepare("Select * from `server` where idchannel = ?");
 $sql2->execute(array($rows['id']));
 $r = $sql2->fetchAll(PDO::FETCH_ASSOC);
-$num_rpw = 0;
-// $r->rowCount();
 $str ="";
+$i = 0;
 foreach($r as $row){
+$i++;
 $str .= $arr[$row['type']]." ,";
 }
 ?>
 <tr>
 <td class="tdname"><div class="maxcontent"><?=$rows['name']?></div>
 <td class="function"><div class="maxcontent"><a href="/api/index.php/editChannel/<?=$rows['id']?>">Sửa Thông tin</a></div>
-<td class=""><div class="maxcontent"><?=$num_rpw?></div>
-<td class="function"><div class="maxcontent"><?=$str?></div>
+<td class="detail"><div class="maxcontent"><?=$i?></div>
+<td class="tdname"><div class="maxcontent"><?=$str?></div>
 <td class="delete" idmv="<?=$rows['id']?>">Xóa
 <?php
 }
