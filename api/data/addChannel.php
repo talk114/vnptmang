@@ -11,8 +11,8 @@ $sv=0;
 for($i=1; $i<=$_POST['soserver']; $i++){
 if(!strpos($_POST["serverdeleted"], "$i") && $_POST['url'][$i]!=""){
 $sv++;
-$server = $con->prepare("INSERT INTO `server`(`idchannel`, `server`, `url`, `type`, `device`) VALUES (:idchannel, :server, :url, :type, :device)");
-$server->execute(array(":idchannel"=> $idchannel, ":server"=>$sv, ":url"=>$_POST['url'][$i], ":type"=>$_POST['type'][$i], ":device"=>$_POST['device'][$i]));
+$server = $con->prepare("INSERT INTO `server`(`idchannel`, `server`, `url`, `type`) VALUES (:idchannel, :server, :url, :type, :device)");
+$server->execute(array(":idchannel"=> $idchannel, ":server"=>$sv, ":url"=>$_POST['url'][$i], ":type"=>$_POST['type'][$i]));
 }
 }
 $update = $con->prepare("Update apichannel set numsv = ? where id = ?");
@@ -26,7 +26,7 @@ $('.themtapphim').click(function(){
 deletesv();
 var crEp = $("#soserver").attr("value");
 var nextEp = parseInt(crEp)+1;
-$('#server').append("<div class='content'>Server "+nextEp+":<br><input type='text' class='classinput' name='url["+nextEp+"]' placeholder='Link ...'><input class='mininput' type='text' name='type["+nextEp+"]' placeholder='Kiểu link....'><input class='mininput' type='text' name='device["+nextEp+"]' placeholder='Thiết bị....'><input type='button' class='delete' sequence="+nextEp+" value='Xoá'><div class='clear'></div></div>");
+$('#server').append("<div class='content'>Server "+nextEp+":<br><input type='text' class='classinput' name='url["+nextEp+"]' placeholder='Link ...'><input class='mininput' type='text' name='type["+nextEp+"]' placeholder='Kiểu link....'><input type='button' class='delete' sequence="+nextEp+" value='Xoá'><div class='clear'></div></div>");
 $("#soserver").attr("value", nextEp);
 deletesv();
 });
@@ -59,7 +59,6 @@ Nhóm:
 Server 1:
 <input class="classinput" type="text" name="url[1]" placeholder="Link Server....">
 <input class="mininput" type="text" name="type[1]" placeholder="Kiểu link....">
-<input class="mininput" type="text" name="device[1]" placeholder="Thiết bị....">
 <input type="button" class="delete" sequence=1 value="Xoá">
 </div>
 <div class="clear"></div>

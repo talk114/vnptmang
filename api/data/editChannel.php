@@ -14,15 +14,15 @@ $server->execute(array($extend1, $i));
 else if($i>$_POST["addedserver"]&& $_POST['url'][$i]!=""){
 //Thêm server
 $sv++;
-$server = $con->prepare("INSERT INTO `server`(`idchannel`, `server`, `url`, `type`, `device`) VALUES (:idchannel, :server, :url, :type, :device)");
-$server->execute(array(":idchannel"=> $extend1, ":server"=>$sv, ":url"=>$_POST['url'][$i], ":type"=>$_POST['type'][$i], ":device"=>$_POST['device'][$i]));
+$server = $con->prepare("INSERT INTO `server`(`idchannel`, `server`, `url`, `type`) VALUES (:idchannel, :server, :url, :type)");
+$server->execute(array(":idchannel"=> $extend1, ":server"=>$sv, ":url"=>$_POST['url'][$i], ":type"=>$_POST['type'][$i]));
 }
 else{
 //Cập nhật server
 if($_POST['url'][$i]!=""){
 $sv++;
-$server = $con->prepare("UPDATE `server` SET `server` = ?, `url`=?, `type`=?, `device`=? where `idchannel`=? and `server` = ?");
-$server->execute(array($sv, $_POST['url'][$i], $_POST['type'][$i], $_POST['device'][$i], $extend1,$i));
+$server = $con->prepare("UPDATE `server` SET `server` = ?, `url`=?, `type`=? where `idchannel`=? and `server` = ?");
+$server->execute(array($sv, $_POST['url'][$i], $_POST['type'][$i], $extend1,$i));
 }
 }
 }
@@ -50,7 +50,7 @@ $(".deletededserver").val(str);
 $('.themtapphim').click(function(){
 var crEp = $("#soserver").attr("value");
 var nextEp = parseInt(crEp)+1;
-$('#server').append("<div class='content'>Server "+nextEp+":<br><input type='text' class='classinput' name='url["+nextEp+"]' placeholder='Link ...'><input class='mininput' type='text' name='type["+nextEp+"]' placeholder='Kiểu link....'><input class='mininput' type='text' name='device["+nextEp+"]' placeholder='Thiết bị....'><input type='button' class='delete' sequence="+nextEp+" value='Xoá'><div class='clear'></div></div>");
+$('#server').append("<div class='content'>Server "+nextEp+":<br><input type='text' class='classinput' name='url["+nextEp+"]' placeholder='Link ...'><input class='mininput' type='text' name='type["+nextEp+"]' placeholder='Kiểu link....'><input type='button' class='delete' sequence="+nextEp+" value='Xoá'><div class='clear'></div></div>");
 $("#soserver").attr("value", nextEp);
 $('.delete').click(function(){
 $(this).parent().remove();
@@ -78,7 +78,6 @@ $i++;
 Server <?=$rowssv['server']?>:
 <input class="classinput" type="text" name="url[<?=$i?>]" value="<?=$rowssv['url']?>" placeholder="Link Server....">
 <input class="mininput" type="text" name="type[<?=$i?>]" value="<?=$rowssv['type']?>" placeholder="Kiểu link....">
-<input class="mininput" type="text" name="device[<?=$i?>]" value="<?=$rowssv['device']?>" placeholder="Thiết bị....">
 <input type="button" class="delete" sequence=<?=$i?> value="Xoá"><div class="clear"></div>
 </div>
 <?php
