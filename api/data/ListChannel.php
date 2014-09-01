@@ -55,7 +55,8 @@ foreach($query as $rows){
 $sql2 = $con->prepare("Select * from `server` where idchannel = ?");
 $sql2->execute(array($rows['id']));
 $r = $sql2->fetchAll(PDO::FETCH_ASSOC);
-$num_rpw = $r->rowCount();
+$num_rpw = 0;
+// $r->rowCount();
 $str ="";
 foreach($r as $row){
 $str .= $arr[$row['type']]." ,";
