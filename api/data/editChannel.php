@@ -47,7 +47,7 @@ $(".deletededserver").val(str);
 }
 });
 
-$('.themtapphim').click(function(){
+$('.themserver').click(function(){
 var crEp = $("#soserver").attr("value");
 var nextEp = parseInt(crEp)+1;
 $('#server').append("<div class='content'>Server "+nextEp+":<br><input type='text' class='classinput' name='url["+nextEp+"]' placeholder='Link ...'><input class='mininput' type='text' name='type["+nextEp+"]' placeholder='Kiểu link....'><input type='button' class='delete' sequence="+nextEp+" value='Xoá'><div class='clear'></div></div>");
@@ -84,7 +84,7 @@ Server <?=$rowssv['server']?>:
 }
 ?>
 </section>
-<div class="themtapphim">Thêm server</div>
+<div class="themserver">Thêm server</div>
 <input type="hidden" name="soserver" id="soserver" value="<?php if($row['numsv']=="") echo "0"; else echo $row['numsv']; ?>">
 <input type="hidden" name="addedserver" id="addedserver" value="<?php if($row['numsv']=="") echo "0"; else echo $row['numsv']; ?>">
 <input type="hidden" name="deletededserver" class="deletededserver">
@@ -94,7 +94,7 @@ Server <?=$rowssv['server']?>:
 <div class="info">
 <em style="padding-left:100px">
 1. M3U8, RTMP<br>
-2.VNN
+2.VNN<br>
 3. FPT<br>
 4. VNPT<br>
 5. Clip<br>

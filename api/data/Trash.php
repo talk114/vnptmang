@@ -16,7 +16,7 @@ padding:5px;
 <script>
 $(function(){
 $('.delete').click(function(){
-$.post("/restoreChannel.php", {id:$(this).attr('idmv')}, function(suc){
+$.post("/api/restoreChannel.php", {id:$(this).attr('idmv')}, function(suc){
 if(suc.success==true){
 $('.notice').css({'right':10});
 $('.notice').text('Khôi phục thành công!');
