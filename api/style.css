@@ -94,7 +94,9 @@ position: absolute;
 top: 100%;
 z-index: 9999;
 }
-
+nav ul li:hover>ul{
+display:block;
+}
 main {
     float: left;
     width: 100%; 
