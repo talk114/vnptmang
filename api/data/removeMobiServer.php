@@ -5,10 +5,10 @@ $query->execute(array($_POST['server']));
 foreach($query->fetchAll() as $row){
 $update1 = $con->prepare("UPDATE `server` SET `trashmobi` = 1 WHERE `id` = ? ");
 $update1->execute(array($row['id']));
-$query2 = $con->prepare("SELECT `numsv` FROM `apichannel` WHERE `id` = ?");
+$query2 = $con->prepare("SELECT `numbersv_mobile` FROM `apichannel` WHERE `id` = ?");
 $query2->execute(array($row['idchannel']));
 $rw = $query2->fetch(PDO::FETCH_ASSOC);
-$n = $rw['numsv']-1;
+$n = $rw['numbersv_mobile']-1;
 $update2 = $con->prepare("UPDATE `apichannel` SET `numbersv_mobile` = ? WHERE `id` = ? ");
 $update2->execute(array($n, $row['idchannel']));
 }
