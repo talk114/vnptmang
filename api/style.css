@@ -82,6 +82,9 @@ color:#ffffff;
 padding:20px;
 text-transform: uppercase;
 }
+nav ul li ul li {
+display: block;
+}
 main {
     float: left;
     width: 100%; 
