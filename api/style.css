@@ -85,6 +85,16 @@ text-transform: uppercase;
 nav ul li ul li {
 display: block;
 }
+nav ul ul {
+background-color: #4198d9;
+display: none;
+left: 0;
+min-width: 250px;
+position: absolute;
+top: 100%;
+z-index: 9999;
+}
+
 main {
     float: left;
     width: 100%; 
