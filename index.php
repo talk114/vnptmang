@@ -29,8 +29,6 @@ WebTV
 <main>
 <?php
 if(!isset($_COOKIE['admin'])) header("Location: http://vnptmang.com");
-if($_SERVER['HTTP_X_FORWARDED_PROTO']!='https') 
-	header("Location: https://ch.vnptmang.com");
 include_once('mysql.php');
 $uri = $_SERVER['REQUEST_URI'];
 list($null, $fun, $extend1, $extend2, $extend3) = explode('/', $uri);
