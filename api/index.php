@@ -29,7 +29,7 @@ API
 <main>
 <?php
 if(!isset($_COOKIE['admin'])) header("Location: http://vnptmang.com");
-if(!stripos($_SERVER['HTTP_X_FORWARDED_PROTO'],'https')) 
+if($_SERVER['HTTP_X_FORWARDED_PROTO']!='https') 
 	header("Location: https://ch.vnptmang.com/api");
 	
 include_once('../mysql.php');
