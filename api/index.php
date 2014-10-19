@@ -29,7 +29,9 @@ API
 <main>
 <?php
 if(!isset($_COOKIE['admin'])) header("Location: http://vnptmang.com");
-//error_reporting(0);
+if(!stripos($_SERVER['SERVER_PROTOCOL'],'https')) 
+	header("Location: https://ch.vnptmang.com/api")
+	
 include_once('../mysql.php');
 $uri = $_SERVER['REQUEST_URI'];
 list($null, $folder,$index, $fun, $extend1, $extend2, $extend3) = explode('/', $uri);
