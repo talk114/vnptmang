@@ -78,7 +78,7 @@ Nhóm:
 <input class="classinput" type="text" name="groups" placeholder="Nhóm...." value="<?=$row['groups']?>"><div class="clear"></div>
 <section id="server">
 <?php
-$i=0, $mobi =0, $pc=0;
+$i=0; $mobi =0; $pc=0;
 foreach($querysv->fetchAll() as $rowssv){
 $i++;
 $more="";
