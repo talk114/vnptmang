@@ -51,7 +51,7 @@ $(".deletededserver").val(str);
 $('.themserver').click(function(){
 var crEp = $("#soserver").attr("value");
 var nextEp = parseInt(crEp)+1;
-$('#server').append("<div class='content'>Server "+nextEp+":<br><input type='text' class='classinput' name='url["+nextEp+"]' placeholder='Link ...'><input class='mininput' type='text' name='type["+nextEp+"]' placeholder='Kiểu link....'><input type='button' class='delete' sequence="+nextEp+" value='Xoá'><div class='clear'></div></div>");
+$('#server').append("<div class='content'>Server "+nextEp+":<input type='text' class='classinput' name='url["+nextEp+"]' placeholder='Link ...'><input class='mininput' type='text' name='type["+nextEp+"]' placeholder='Kiểu link....'><input type='button' class='delete' sequence="+nextEp+" value='Xoá'><div class='clear'></div></div>");
 $("#soserver").attr("value", nextEp);
 $('.delete').click(function(){
 $(this).parent().remove();
