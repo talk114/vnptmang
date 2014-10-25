@@ -11,19 +11,30 @@
 <body>
 <header>
 API
-<nav class="clear"><ul>
-<li><a href="/api/">Danh sách Kênh</a></li>
-<li><a href="/api/index.php/addChannel">Thêm kênh mới</a></li>
-<li><a href="/api/index.php/Trash">Thùng rác</a></li>
-<li>Sắp xếp<ul>
-<li><a href="/api/index.php/sortChannel/1">VTV</a></li>
-<li><a href="/api/index.php/sortChannel/2">VTC</a></li>
-<li><a href="/api/index.php/sortChannel/3">VTVCab</a></li>
-<li><a href="/api/index.php/sortChannel/4">Quốc tế</a></li>
-<li><a href="/api/index.php/sortChannel/5">Địa phương</a></li>
-<li><a href="/api/index.php/sortChannel/6">Quốc gia</a></li>
-</ul></li>
-</ul></nav>
+<nav class="clear">
+	<ul>
+		<li><a href="/api/">Danh sách Kênh</a></li>
+		<li><a href="/api/index.php/addChannel">Thêm kênh mới</a></li>
+		<li><a href="/api/index.php/Trash">Thùng rác</a></li>
+		<li><a href="/api/index.php/removeMobiServer">Xóa ServerMobi</a>
+			<ul>
+				<li><a href="/api/index.php/restoreMobiServer">Khôi phục Server Mobi</a></li>
+				<li><a href="/api/index.php/removePCServer">Xóa Server PC</a></li>
+				<li><a href="/api/index.php/restorePCServer">Khôi phục Server PC</a></li>
+			</ul>		
+		</li>
+		<li><a href="#">Sắp xếp</a>
+			<ul>
+				<li><a href="/api/index.php/sortChannel/1">VTV</a></li>
+				<li><a href="/api/index.php/sortChannel/2">VTC</a></li>
+				<li><a href="/api/index.php/sortChannel/3">VTVCab</a></li>
+				<li><a href="/api/index.php/sortChannel/4">Quốc tế</a></li>
+				<li><a href="/api/index.php/sortChannel/5">Địa phương</a></li>
+				<li><a href="/api/index.php/sortChannel/6">Quốc gia</a></li>
+			</ul>
+		</li>
+	</ul>
+</nav>
 
 </header>
 <main>
