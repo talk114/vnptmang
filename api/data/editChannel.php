@@ -3,8 +3,6 @@ if(isset($_POST['submit'])){
 $query = $con->prepare("UPDATE `apichannel` SET `name`=?,`imgsrc`=?,`groups`=? where id=?");
 $query->execute(array($_POST['name'],$_POST['img'],$_POST['groups'],$extend1));
 $sv=0;
-echo $_POST["deletededserver"];
-
 for($i=1; $i<=$_POST['soserver']; $i++){
 if(strpos($_POST["deletededserver"], "$i")){
 //Xoá server
@@ -26,8 +24,10 @@ $server->execute(array($sv, $_POST['url'][$i], $_POST['type'][$i], $extend1,$i))
 }
 }
 }
-$update = $con->prepare("Update `apichannel` set `numsv` = ? where `id` = ?");
-$update->execute(array($sv, $extend1));
+$svmobi = $sv - $_POST['trashmobi'];
+$svpc = $sv - $_POST['trashpc'];
+$update = $con->prepare("Update `apichannel` set `numsv` = ?, `numbersv_mobi=? where `id` = ?");
+$update->execute(array($svpc, $svmobi, $extend1));
 header('Location: /api/');
 }else{
 $sql = $con->prepare("SELECT * FROM `apichannel` WHERE id=?");
@@ -35,6 +35,7 @@ $sql->execute(array($extend1));
 $row =$sql->fetch(PDO::FETCH_ASSOC);
 $querysv = $con->prepare("SELECT * FROM `server` WHERE `idchannel`=?");
 $querysv->execute(array($extend1));
+$has_numsv = $querysv->rowCount();
 ?>
 <script>
 $(function(){
@@ -55,7 +56,14 @@ $("#soserver").attr("value", nextEp);
 $('.delete').click(function(){
 $(this).parent().remove();
 });});
-
+$(".pc").click(function(){
+var value =  parseInt($("#trashpc").val())-1;
+$("#trashpc").val(value);
+});
+$(".mobi").click(function(){
+var value =  parseInt($("#trashmobi").val())-1;
+$("#trashmobi").val(value);
+});
 });
 
 </script>
@@ -70,24 +78,35 @@ Nhóm:
 <input class="classinput" type="text" name="groups" placeholder="Nhóm...." value="<?=$row['groups']?>"><div class="clear"></div>
 <section id="server">
 <?php
-$i=0;
+$i=0, $mobi =0, $pc=0;
 foreach($querysv->fetchAll() as $rowssv){
 $i++;
-?>
+$more="";
+if($rowssv['trashmobi']==1){
+ $more .= " mobi";
+ $mobi++;
+ }
+ if($rowssv['trashpc']==1){
+ $more .= " pc";
+  $pc++;
+ }
+ ?>
 <div class="content">
 Server <?=$rowssv['server']?>:
 <input class="classinput" type="text" name="url[<?=$i?>]" value="<?=$rowssv['url']?>" placeholder="Link Server....">
 <input class="mininput" type="text" name="type[<?=$i?>]" value="<?=$rowssv['type']?>" placeholder="Kiểu link....">
-<input type="button" class="delete" sequence=<?=$i?> value="Xoá"><div class="clear"></div>
+<input type="button" class="delete<?=$more?>" sequence=<?=$i?> value="Xoá"><div class="clear"></div>
 </div>
 <?php
 }
 ?>
 </section>
 <div class="themserver">Thêm server</div>
-<input type="hidden" name="soserver" id="soserver" value="<?php if($row['numsv']=="") echo "0"; else echo $row['numsv']; ?>">
-<input type="hidden" name="addedserver" id="addedserver" value="<?php if($row['numsv']=="") echo "0"; else echo $row['numsv']; ?>">
+<input type="hidden" name="soserver" id="soserver" value="<?php if($has_numsv=="") echo "0"; else echo $row['numsv']; ?>">
+<input type="hidden" name="addedserver" id="addedserver" value="<?php if($has_numsv=="") echo "0"; else echo $row['numsv']; ?>">
 <input type="hidden" name="deletededserver" class="deletededserver">
+<input type="hidden" id="trashpc" name="trashpc" value="<?=$pc?>">
+<input type="hidden" id="trashmobi" name="trashmobi" value="<?=$mobi?>">
 <input class="button" type="submit" name="submit" value="Gửi">
 </form>
 <div class="clear"></div>
