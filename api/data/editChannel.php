@@ -102,8 +102,8 @@ Server <?=$rowssv['server']?>:
 ?>
 </section>
 <div class="themserver">Thêm server</div>
-<input type="hidden" name="soserver" id="soserver" value="<?php if($has_numsv=="") echo "0"; else echo $row['numsv']; ?>">
-<input type="hidden" name="addedserver" id="addedserver" value="<?php if($has_numsv=="") echo "0"; else echo $row['numsv']; ?>">
+<input type="hidden" name="soserver" id="soserver" value="<?=$has_numsv?>">
+<input type="hidden" name="addedserver" id="addedserver" value="<?=$has_numsv?>">
 <input type="hidden" name="deletededserver" class="deletededserver">
 <input type="hidden" id="trashpc" name="trashpc" value="<?=$pc?>">
 <input type="hidden" id="trashmobi" name="trashmobi" value="<?=$mobi?>">
