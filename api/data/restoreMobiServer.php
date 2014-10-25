@@ -23,8 +23,8 @@ Mã Server:
 <br>
 <br>
 <div class="clear"></div>
-<div class="info">
-<em style="padding-left:100px">
+<div class="info"  style="padding-left:100px">
+<em>
 1. M3U8, RTMP<br>
 2. VNN<br>
 3. FPT<br>
