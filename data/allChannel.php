@@ -13,7 +13,7 @@ $content[$rows['groups']] .= '<figure class="channel"><a title="'.$rows['title']
 <script>
 $(function(){
 $('#send').click(function(){
-$.post("http://vnptmang.hdg.vn/wp-content/themes/VNPTmang/tap.php", {content:$('#vnptmang').html()}, function(){
+$.post("https://vnptmang.hdg.vn/wp-content/themes/VNPTmang/tap.php", {content:$('#vnptmang').html()}, function(){
 	alert("Gui thanh cong!");
 });
 });
