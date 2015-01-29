@@ -6,14 +6,16 @@ $sql->execute();
 foreach($sql->fetchAll() as $rows){
 if($rows['alt']=='') $alt = $rows['title'];
 else $alt = $rows['alt'];
-$content[$rows['groups']] .= '<figure class="channel"><a title="'.$rows['title'].'"  href="'.$rows['url'].'"><img class="imgchl" src="'.$rows['imgsrc'].'" alt="'.$alt.'"/></a><div class="popup" rel=""></div></figure>';
+$content[$rows['groups']] .= '<figure class="channel"><a title="'.$rows['title'].'"  href="'.$rows['url'].'"><img class="imgchl" src="'.str_replace("http://","https://", $rows['imgsrc']).'" alt="'.$alt.'"/></a><div class="popup" rel=""></div></figure>';
 }
 
 ?>
 <script>
 $(function(){
 $('#send').click(function(){
-$.post("http://vnptmang.hdg.vn/wp-content/themes/VNPTmang/tap.php", {content:$('#vnptmang').html()});
+$.post("http://vnptmang.hdg.vn/wp-content/themes/VNPTmang/tap.php", {content:$('#vnptmang').html()}, function(){
+	alert("Gui thanh cong!");
+});
 });
 });
 </script>
