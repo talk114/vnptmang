@@ -10,8 +10,7 @@ $del->execute();
 
 for($i=0; $i<=sizeof($_POST['url']); $i++){
 if($_POST['url'][$i]!=""){
- if(($i+1)>$_POST["addedserver"]){
-	 echo "Add";
+ if(($i+1)>$_POST["addedserver"]){	
 //Thêm server
 	$sv++;
 	$server = $con->prepare("INSERT INTO `server`(`idchannel`, `server`, `url`, `type`) VALUES (:idchannel, :server, :url, :type)");
@@ -29,6 +28,9 @@ $svpc = $sv - $_POST['trashpc'];
 $update = $con->prepare("Update `apichannel` set `numsv` = ?, `numbersv_mobile`=? where `id` = ?");
 $update->execute(array($svpc, $svmobi, $extend1));
 //header('Location: /api/');
+?>
+<script>window.location = "<?=$_SERVER['URI_REQUEST']?>";</script>
+<?php
 }else{
 $sql = $con->prepare("SELECT * FROM `apichannel` WHERE id=?");
 $sql->execute(array($extend1));
