@@ -30,7 +30,7 @@ Mã Server:
 	$arr = array("", "Link M3u8", "VNN", "FPT", "VNPT", "Clip", "HTVOnline", "VTVplus", "VTVplay", "Social", "Movie", "TV VNN");
 	$arr2= array("PC", "Mobile");
 	foreach($select->fetchAll() as $row){
-	echo $i.": ".$arr2[$row['device']]." - ".$arr[$row['type']]."<br>";
+		echo ($i+1).": ".$arr2[$row['device']]." - ".$arr[$row['type']]."(".$row['type'].")"."<br>";
 	}		
 	?>
 </pre>

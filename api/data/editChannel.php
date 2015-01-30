@@ -30,7 +30,7 @@ $row = $select->fetch(PDO::FETCH_ASSOC);
 if(sizeof($row)>0){	
 	if($row['device']==0) $pc++;
 	else if($row['device']==1) $mb++;
-	echo $row['type']." - ".$mb;
+	echo $row['type']." - ".$pc;
 }
 }
 }
@@ -85,7 +85,7 @@ Nhóm:
 <input class="classinput" type="text" name="groups" placeholder="Nhóm...." value="<?=$row['groups']?>"><div class="clear"></div>
 <section id="server">
 <?php
-$i=0; $mobi =0; $pc=0;
+$i=0;
 foreach($querysv->fetchAll() as $rowssv){
 $i++;
  ?>
