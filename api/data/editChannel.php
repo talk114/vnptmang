@@ -3,6 +3,8 @@ if(isset($_POST['submit'])){
 $query = $con->prepare("UPDATE `apichannel` SET `name`=?,`imgsrc`=?,`groups`=? where id=?");
 $query->execute(array($_POST['name'],$_POST['img'],$_POST['groups'],$extend1));
 $sv=0;
+$pc=0;
+$mb=0;
 $strdel = $_POST['deletededserver']."]";
 $strdel = str_replace(",]", "", $strdel);
 $del=$con->prepare("DELETE FROM `server` where `id` in (".$strdel.")");
@@ -10,6 +12,7 @@ $del->execute();
 
 for($i=0; $i<=sizeof($_POST['url']); $i++){
 if($_POST['url'][$i]!=""){
+	
  if(($i+1)>$_POST["addedserver"]){	
 //Thêm server
 	$sv++;
@@ -21,15 +24,24 @@ if($_POST['url'][$i]!=""){
 	$server = $con->prepare("UPDATE `server` SET `server` = ?, `url`=?, `type`=? where `id`=?");
 	$server->execute(array($sv, $_POST['url'][$i], $_POST['type'][$i],$_POST['id'][$i]));
 }
+$select = $con->prepare("SELECT * FROM `trash` where `type` = ? limit 1");
+$select->execute(array($_POST['type'][$i]));
+$row = $select->fetch(PDO::FETCH_ASSOC);
+if(sizeof($row)>0){
+	echo "Xóa 1 ";
+	if($row['device']==0) $pc++;
+	else if($row['device']==1) $mb++;
 }
 }
-$svmobi = $sv - $_POST['trashmobi'];
-$svpc = $sv - $_POST['trashpc'];
+}
+echo "<br>".$mb." ".$pc;
+$svmobi = $sv - $pc;
+$svpc = $sv - $mb;
 $update = $con->prepare("Update `apichannel` set `numsv` = ?, `numbersv_mobile`=? where `id` = ?");
 $update->execute(array($svpc, $svmobi, $extend1));
 //header('Location: /api/');
 ?>
-<script>window.location = "<?=$_SERVER['URI_REQUEST']?>";</script>
+<script>//window.location = "<?=$_SERVER['URI_REQUEST']?>";</script>
 <?php
 }else{
 $sql = $con->prepare("SELECT * FROM `apichannel` WHERE id=?");
@@ -59,14 +71,6 @@ $('#server').append("<div class='content'>Server "+num_sv+":<input type='text' c
 $('.delete').click(function(){
 $(this).parent().remove();
 });});
-$(".pc").click(function(){
-	var value =  parseInt($("#trashpc").val())-1;
-	$("#trashpc").val(value);
-});
-$(".mobi").click(function(){
-	var value =  parseInt($("#trashmobi").val())-1;
-	$("#trashmobi").val(value);
-});
 });
 
 </script>
@@ -84,22 +88,13 @@ Nhóm:
 $i=0; $mobi =0; $pc=0;
 foreach($querysv->fetchAll() as $rowssv){
 $i++;
-$more="";
-if($rowssv['trashmobi']==1){
- $more .= " mobi";
- $mobi++;
- }
- if($rowssv['trashpc']==1){
- $more .= " pc";
-  $pc++;
- }
  ?>
 <div class="content">
 Server <?=$rowssv['server']?>:
 <input class="classinput" type="text" name="url[]" value="<?=$rowssv['url']?>" placeholder="Link Server....">
 <input class="mininput" type="text" name="type[]" value="<?=$rowssv['type']?>" placeholder="Kiểu link....">
 <input type="hidden" name="id[]" value="<?=$rowssv['id']?>">
-<input type="button" class="delete<?=$more?>" cid=<?=$rowssv['id']?> value="Xoá"><div class="clear"></div>
+<input type="button" class="delete" cid=<?=$rowssv['id']?> value="Xoá"><div class="clear"></div>
 </div>
 <?php
 }
@@ -108,8 +103,6 @@ Server <?=$rowssv['server']?>:
 <div class="themserver">Thêm server</div>
 <input type="hidden" name="addedserver" id="addedserver" value="<?=$has_numsv?>">
 <input type="hidden" name="deletededserver" class="deletededserver">
-<input type="hidden" id="trashpc" name="trashpc" value="<?=$pc?>">
-<input type="hidden" id="trashmobi" name="trashmobi" value="<?=$mobi?>">
 <input class="button" type="submit" name="submit" value="Gửi">
 </form>
 <div class="clear"></div>

@@ -1,8 +1,8 @@
 ﻿<?php
 if(isset($_POST['submit'])){
+/*
 $query = $con->prepare("SELECT * FROM `server` where type = ?");
 $query->execute(array($_POST['server']));
-/*
 if($_POST['device']==0){
 	foreach($query->fetchAll() as $row){
 		$update1 = $con->prepare("UPDATE `server` SET `trashpc` = 1 WHERE `id` = ? ");
