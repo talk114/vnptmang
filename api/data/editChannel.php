@@ -8,7 +8,7 @@ $strdel = str_replace(",]", "", $strdel);
 $del=$con->prepare("DELETE FROM `server` where `id` in (".$strdel.")");
 $del->execute();
 
-for($i=1; $i<=sizeof($_POST['url']); $i++){
+for($i=0; $i<=sizeof($_POST['url']); $i++){
 if($_POST['url'][$i]!=""){
  if($i>$_POST["addedserver"]){
 //Thêm server
