@@ -35,8 +35,8 @@ if(sizeof($row)>0){
 }
 }
 echo "<br>".$mb." ".$pc;
-$svmobi = $sv - $pc;
-$svpc = $sv - $mb;
+$svmobi = $sv - $mb;
+$svpc = $sv - $pc;
 $update = $con->prepare("Update `apichannel` set `numsv` = ?, `numbersv_mobile`=? where `id` = ?");
 $update->execute(array($svpc, $svmobi, $extend1));
 //header('Location: /api/');
