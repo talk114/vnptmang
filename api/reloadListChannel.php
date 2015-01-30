@@ -1,5 +1,5 @@
 <?php
-include_once("mysql.php");
+include_once("../mysql.php");
 $sql = $con->prepare("Select * from `apichannel` where trash=0 order by `sort`");
 $sql->execute(array());
 $query = $sql->fetchAll(PDO::FETCH_ASSOC);
