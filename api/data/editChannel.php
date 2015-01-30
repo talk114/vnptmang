@@ -3,7 +3,9 @@ if(isset($_POST['submit'])){
 $query = $con->prepare("UPDATE `apichannel` SET `name`=?,`imgsrc`=?,`groups`=? where id=?");
 $query->execute(array($_POST['name'],$_POST['img'],$_POST['groups'],$extend1));
 $sv=0;
-$del=$con->prepare("DELETE FROM `server` where `id` in (".$_POST['deletededserver'].")");
+$strdel = $_POST['deletededserver']."]";
+$strdel = str_replace(",]", "", $strdel);
+$del=$con->prepare("DELETE FROM `server` where `id` in (".$strdel.")");
 $del->execute();
 
 for($i=1; $i<=$_POST['soserver']; $i++){
@@ -40,7 +42,7 @@ $(function(){
 $('.delete').click(function(){
 if($(this).attr('seq')!=""){
 	var str = $(".deletededserver").val();
-	str += ","+$(this).attr("cid")+" ";
+	str += $(this).attr("cid")+",";
 	$(".deletededserver").val(str);	
 }
 $(this).parent().remove();
