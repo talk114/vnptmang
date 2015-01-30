@@ -2,6 +2,7 @@
 $sql = $con->prepare("Select * from `apichannel` where trash=0 order by `sort`");
 $sql->execute(array());
 $query = $sql->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 <style>
 
@@ -15,6 +16,9 @@ padding:5px;
 </style>
 <script>
 $(function(){
+$(window).load(function((){
+		$.post("/api/countServer.php");
+});
 $('.delete').click(function(){
 $.post("/api/delChannel.php", {id:$(this).attr('idmv')}, function(suc){
 if(suc.success==true){
@@ -51,7 +55,7 @@ $('.notice').css({'right':-500});
 <tbody>
 <?php
 $arr = array("", "Link M3u8", "VNN", "FPT", "VNPT", "Clip", "HTVOnline", "VTVplus", "VTVplay", "Social", "Movie", "TV VNN");
-foreach($query as $rows){
+foreach($query as $rows){	
 $sql2 = $con->prepare("Select * from `server` where idchannel = ?");
 $sql2->execute(array($rows['id']));
 $r = $sql2->fetchAll(PDO::FETCH_ASSOC);
