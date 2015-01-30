@@ -16,8 +16,12 @@ padding:5px;
 </style>
 <script>
 $(function(){
-$(window).load(function(){
-		$.post("/api/countServer.php");
+$(".reload-server").click(function(){
+		$.post("/api/countServer.php", function(){
+			$.post("/api/reloadListChannel.php", function(data){
+				$(".table tbody").html(data);
+			});
+		});
 });
 $('.delete').click(function(){
 $.post("/api/delChannel.php", {id:$(this).attr('idmv')}, function(suc){
@@ -43,7 +47,7 @@ $('.notice').css({'right':-500});
 </script>
 
 <div class="notice"><span class="close">x</span></div>
-
+<div><button class="reload-server">Cập nhật lại server</button></div>
 <table class="table">
 <thead>
 <tr>
