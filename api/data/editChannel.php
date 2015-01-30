@@ -38,12 +38,13 @@ $has_numsv = $querysv->rowCount();
 var num_sv = <?=$has_numsv?>;
 $(function(){
 $('.delete').click(function(){
-$(this).parent().remove();
 if(parseInt($(this).attr('sequence'))<= parseInt($("#addedserver").val())){
 	var str = $(".deletededserver").val();
 	str += ","+$(this).attr("sequence")+" ";
 	$(".deletededserver").val(str);	
 }
+$(this).parent().remove();
+
 });
 
 $('.themserver').click(function(){
