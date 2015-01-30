@@ -27,7 +27,7 @@ $svmobi = $sv - $_POST['trashmobi'];
 $svpc = $sv - $_POST['trashpc'];
 $update = $con->prepare("Update `apichannel` set `numsv` = ?, `numbersv_mobile`=? where `id` = ?");
 $update->execute(array($svpc, $svmobi, $extend1));
-header('Location: /api/');
+//header('Location: /api/');
 }else{
 $sql = $con->prepare("SELECT * FROM `apichannel` WHERE id=?");
 $sql->execute(array($extend1));
