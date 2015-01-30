@@ -23,7 +23,7 @@ if($_POST['url'][$i]!=""){
 }
 $svmobi = $sv - $_POST['trashmobi'];
 $svpc = $sv - $_POST['trashpc'];
-$update = $con->prepare("Update `apichannel` set `numsv` = ?, `numbersv_mobi`=? where `id` = ?");
+$update = $con->prepare("Update `apichannel` set `numsv` = ?, `numbersv_mobile`=? where `id` = ?");
 $update->execute(array($svpc, $svmobi, $extend1));
 header('Location: /api/');
 }else{
