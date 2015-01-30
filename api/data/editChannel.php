@@ -11,6 +11,7 @@ $del->execute();
 for($i=0; $i<=sizeof($_POST['url']); $i++){
 if($_POST['url'][$i]!=""){
  if($i>$_POST["addedserver"]){
+	 echo "Add";
 //Thêm server
 	$sv++;
 	$server = $con->prepare("INSERT INTO `server`(`idchannel`, `server`, `url`, `type`) VALUES (:idchannel, :server, :url, :type)");
