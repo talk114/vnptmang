@@ -18,8 +18,8 @@ if($_POST['url'][$i]!=""){
 }else{
 	//Cập nhật server
 	$sv++;
-	$server = $con->prepare("UPDATE `server` SET `server` = ?, `url`=?, `type`=? where `idchannel`=? and `server` = ?");
-	$server->execute(array($sv, $_POST['url'][$i], $_POST['type'][$i], $extend1,$i));
+	$server = $con->prepare("UPDATE `server` SET `server` = ?, `url`=?, `type`=? where `id`=?");
+	$server->execute(array($sv, $_POST['url'][$i], $_POST['type'][$i],$_POST['id'][$i]));
 }
 }
 }
@@ -98,6 +98,7 @@ if($rowssv['trashmobi']==1){
 Server <?=$rowssv['server']?>:
 <input class="classinput" type="text" name="url[]" value="<?=$rowssv['url']?>" placeholder="Link Server....">
 <input class="mininput" type="text" name="type[]" value="<?=$rowssv['type']?>" placeholder="Kiểu link....">
+<input type="hidden" name="id[]" value="<?=$rowssv['id']?>">
 <input type="button" class="delete<?=$more?>" cid=<?=$rowssv['id']?> value="Xoá"><div class="clear"></div>
 </div>
 <?php
