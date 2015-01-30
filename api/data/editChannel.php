@@ -28,7 +28,7 @@ $select = $con->prepare("SELECT * FROM `trash` where `type` = ? limit 1");
 $select->execute(array($_POST['type'][$i]));
 $row = $select->fetch(PDO::FETCH_ASSOC);
 if(sizeof($row)>0){
-	echo "Xóa 1 ";
+	echo $row['type']." - ";
 	if($row['device']==0) $pc++;
 	else if($row['device']==1) $mb++;
 }

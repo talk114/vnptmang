@@ -16,9 +16,9 @@ API
 		<li><a href="/api/">Danh sách Kênh</a></li>
 		<li><a href="/api/index.php/addChannel">Thêm kênh mới</a></li>
 		<li><a href="/api/index.php/Trash">Thùng rác</a></li>
-		<li><a href="/api/index.php/removeServer">Xóa ServerMobi</a>
+		<li><a href="/api/index.php/removeServer">Xóa Server</a>
 			<ul>
-				<li><a href="/api/index.php/restoreServer">Khôi phục Server Mobi</a></li>
+				<li><a href="/api/index.php/restoreServer">Khôi phục Server</a></li>
 			</ul>		
 		</li>
 		<li><a href="#">Sắp xếp</a>
