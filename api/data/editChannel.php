@@ -38,9 +38,9 @@ $has_numsv = $querysv->rowCount();
 var num_sv = <?=$has_numsv?>;
 $(function(){
 $('.delete').click(function(){
-if(parseInt($(this).attr('sequence'))<= parseInt($("#addedserver").val())){
+if($(this).attr('seq')!=""){
 	var str = $(".deletededserver").val();
-	str += ","+$(this).attr("sequence")+" ";
+	str += ","+$(this).attr("cid")+" ";
 	$(".deletededserver").val(str);	
 }
 $(this).parent().remove();
@@ -49,7 +49,7 @@ $(this).parent().remove();
 
 $('.themserver').click(function(){
 	num_sv++;
-$('#server').append("<div class='content'>Server "+num_sv+":<input type='text' class='classinput' name='url[]' placeholder='Link ...'><input class='mininput' type='text' name='type[]' placeholder='Kiểu link....'><input type='button' class='delete' value='Xoá'><div class='clear'></div></div>");
+$('#server').append("<div class='content'>Server "+num_sv+":<input type='text' class='classinput' name='url[]' placeholder='Link ...'><input class='mininput' type='text' name='type[]' placeholder='Kiểu link....'><input type='button' class='delete' seq='added' value='Xoá'><div class='clear'></div></div>");
 
 $('.delete').click(function(){
 $(this).parent().remove();
@@ -93,7 +93,7 @@ if($rowssv['trashmobi']==1){
 Server <?=$rowssv['server']?>:
 <input class="classinput" type="text" name="url[]" value="<?=$rowssv['url']?>" placeholder="Link Server....">
 <input class="mininput" type="text" name="type[]" value="<?=$rowssv['type']?>" placeholder="Kiểu link....">
-<input type="button" class="delete<?=$more?>" sequence=<?=$rowssv['id']?> value="Xoá"><div class="clear"></div>
+<input type="button" class="delete<?=$more?>" cid=<?=$rowssv['id']?> value="Xoá"><div class="clear"></div>
 </div>
 <?php
 }
