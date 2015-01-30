@@ -17,7 +17,24 @@ Mã Server:
 <br>
 <br>
 <div class="clear"></div>
+
+
 <div class="info"  style="padding-left:100px">
+<pre>
+	<p>SERVER đã xóa:
+	</p>
+	<?php	
+	$select = $con->prepare("SELECT * FROM `trash`");
+	$select->execute(array());
+	$i=0;
+	$arr = array("", "Link M3u8", "VNN", "FPT", "VNPT", "Clip", "HTVOnline", "VTVplus", "VTVplay", "Social", "Movie", "TV VNN");
+	$arr2= array("PC", "Mobile");
+	foreach($select->fetchAll() as $row){
+	echo $i.": ".$arr2[$row['device']]." - ".$arr[$row['type']]."<br>";
+	}		
+	?>
+</pre>
+<br>
 <em>
 1. M3U8, RTMP<br>
 2. VNN<br>
