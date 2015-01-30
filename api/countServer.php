@@ -16,7 +16,7 @@ $mb=0;
 			if($row['device']==0&&$row['type']!="") $pc++;
 			else if($row['device']==1) $mb++;
 		}
-	}	
+	}
 	$svpc = $server->rowCount() - $pc;
 	$svmobi = $server->rowCount() - $mb;
 	$update = $con->prepare("Update `apichannel` set `numsv` = ?, `numbersv_mobile`=? where `id` = ?");

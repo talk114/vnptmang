@@ -16,7 +16,7 @@ padding:5px;
 </style>
 <script>
 $(function(){
-$(window).load(function((){
+$(window).load(function(){
 		$.post("/api/countServer.php");
 });
 $('.delete').click(function(){
