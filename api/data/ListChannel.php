@@ -59,7 +59,7 @@ $('.notice').css({'right':-500});
 <tbody>
 <?php
 $arr = array("", "Link M3u8", "VNN", "FPT", "VNPT", "Clip", "HTVOnline", "VTVplus", "VTVplay", "Social", "Movie", "TV VNN");
-foreach($query as $rows){	
+foreach($query as $rows){
 $sql2 = $con->prepare("Select * from `server` where idchannel = ?");
 $sql2->execute(array($rows['id']));
 $r = $sql2->fetchAll(PDO::FETCH_ASSOC);

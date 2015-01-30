@@ -7,7 +7,13 @@ $query = $sql->fetchAll(PDO::FETCH_ASSOC);
 <?php
 $arr = array("", "Link M3u8", "VNN", "FPT", "VNPT", "Clip", "HTVOnline", "VTVplus", "VTVplay", "Social", "Movie", "TV VNN");
 foreach($query as $rows){
-	$str .= $arr[$row['type']]." ,";
+$sql2 = $con->prepare("Select * from `server` where idchannel = ?");
+$sql2->execute(array($rows['id']));
+$r = $sql2->fetchAll(PDO::FETCH_ASSOC);
+$str ="";
+foreach($r as $row){
+$str .= $arr[$row['type']]." ,";
+}
 ?>
 <tr>
 <td class="tdname"><div class="maxcontent"><?=$rows['name']?></div>
