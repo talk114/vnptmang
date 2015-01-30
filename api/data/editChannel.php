@@ -10,7 +10,7 @@ $del->execute();
 
 for($i=0; $i<=sizeof($_POST['url']); $i++){
 if($_POST['url'][$i]!=""){
- if($i>$_POST["addedserver"]){
+ if(($i+1)>$_POST["addedserver"]){
 	 echo "Add";
 //Thêm server
 	$sv++;
