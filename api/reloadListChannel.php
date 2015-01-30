@@ -18,6 +18,34 @@ foreach($query as $rows){
 <?php
 }
 ?>
+<script>
+$(function(){
+$(".reload-server").click(function(){
+		$.post("/api/countServer.php", function(){
+			$.post("/api/reloadListChannel.php", function(data){
+				$(".table tbody").html(data);
+			});
+		});
+});
+$('.delete').click(function(){
+$.post("/api/delChannel.php", {id:$(this).attr('idmv')}, function(suc){
+if(suc.success==true){
+$('.notice').css({'right':10});
+$('.notice').text('Đã xóa thành công!');
+setTimeout(function(){$('.notice').css({'right':-500});}, 2000);
+$.post("/api/reloadListChannel.php", function(data){
+$(".table tbody").html(data);
+});
 
-
-
+}else{
+$('.notice').css({'right':10});
+$('.notice').text('Lỗi không thể xóa được!');
+setTimeout(function(){$('.notice').css({'right':-500});}, 2000);
+}
+},"json");
+});
+$('.notice .close').click(function(){
+$('.notice').css({'right':-500});
+});
+});
+</script>
